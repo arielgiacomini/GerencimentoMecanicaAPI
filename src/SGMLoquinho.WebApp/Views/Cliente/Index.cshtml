@@ -1,0 +1,138 @@
+﻿@model IEnumerable<SGMLoquinho.ApplicationServices.ViewModels.ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apelido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentoCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoCivil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefoneFixo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefoneCelular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TelefoneOutros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroCEP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroNumero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroComplemento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroMunicipio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroBairro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LogradouroUF)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apelido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocumentoCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoCivil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefoneFixo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefoneCelular)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TelefoneOutros)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroCEP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroNumero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroComplemento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroMunicipio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroBairro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogradouroUF)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

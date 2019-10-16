@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\SGMLoquinho.ApplicationServices\SGMLoquinho.ApplicationServices.csproj" />
+    <ProjectReference Include="..\SGMLoquinho.CrossCutting\SGMLoquinho.CrossCutting.csproj" />
+    <ProjectReference Include="..\SGMLoquinho.Domain\SGMLoquinho.Domain.csproj" />
+    <ProjectReference Include="..\SGMLoquinho.Infrastructure\SGMLoquinho.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
