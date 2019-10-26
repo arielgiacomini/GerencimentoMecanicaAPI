@@ -7,7 +7,7 @@ namespace SGMLoquinho.ApplicationServices.ViewModels
     public class ClienteViewModel
     {
         [Key]
-        public int Id { get; set; }
+        public int ClienteId { get; set; }
         [Required(ErrorMessage = "Preencha o campo Nome.")]
         [MaxLength(150, ErrorMessage = "Máximo {0} caracteres.")]
         [MinLength(2, ErrorMessage = "Minímo de {0} caracteres.")]
@@ -17,7 +17,6 @@ namespace SGMLoquinho.ApplicationServices.ViewModels
         public string Sexo { get; set; }
         public string EstadoCivil { get; set; }
         public DateTime DataNascimento { get; set; }
-
         [Required(ErrorMessage = "Preencha o campo E-mail.")]
         [MaxLength(100, ErrorMessage = "Máximo {0} caracteres.")]
         [EmailAddress(ErrorMessage = "Preencha um E-mail válido.")]
@@ -33,6 +32,5 @@ namespace SGMLoquinho.ApplicationServices.ViewModels
         public string LogradouroMunicipio { get; set; }
         public string LogradouroBairro { get; set; }
         public string LogradouroUF { get; set; }
-        //public virtual IEnumerable<ClienteVeiculoViewModel> ClienteVeiculo { get; set; }
     }
 }

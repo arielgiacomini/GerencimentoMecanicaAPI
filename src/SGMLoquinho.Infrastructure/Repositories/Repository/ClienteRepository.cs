@@ -17,7 +17,7 @@ namespace SGMLoquinho.Infrastructure.Repositories.Repository
 
         public IEnumerable<Cliente> GetByAll()
         {
-            return _sGMLoquinhoContext.Clientes.ToList();
+            return _sGMLoquinhoContext.Cliente.ToList();
         }
     }
 }
