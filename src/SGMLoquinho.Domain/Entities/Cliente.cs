@@ -4,7 +4,7 @@ namespace SGMLoquinho.Domain.Entities
 {
     public class Cliente
     {
-        public int Id { get; set; }
+        public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
         public string Apelido { get; set; }
         public string DocumentoCliente { get; set; }

@@ -9,8 +9,8 @@ namespace SGMLoquinho.Infrastructure.Mapping
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             builder.ToTable("Cliente");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(x => x.ClienteId);
+            builder.Property(x => x.ClienteId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.NomeCliente);
             builder.Property(x => x.Apelido);
             builder.Property(x => x.DocumentoCliente);
