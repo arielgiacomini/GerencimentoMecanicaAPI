@@ -15,10 +15,12 @@ namespace SGMLoquinho.Infrastructure.Context
         }
 
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<RhColaboradores> RhColaboradores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMapping());
+            modelBuilder.ApplyConfiguration(new RhColaboradoresMapping());
 
             base.OnModelCreating(modelBuilder);
         }
