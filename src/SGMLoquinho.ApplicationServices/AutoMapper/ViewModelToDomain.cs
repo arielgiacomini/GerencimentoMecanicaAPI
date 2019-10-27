@@ -9,7 +9,7 @@ namespace SGMLoquinho.ApplicationServices.AutoMapper
         public ViewModelToDomain()
         {
             CreateMap<ClienteViewModel, Cliente>();
-            //CreateMap<ClienteVeiculoViewModel, ClienteVeiculo>();
+            CreateMap<RhColaboradoresViewModel, RhColaboradores>();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SGMLoquinho.ApplicationServices.Interfaces;
 using SGMLoquinho.ApplicationServices.Services;
 using SGMLoquinho.Infrastructure.Context;
+using SGMLoquinho.Infrastructure.Repositories.Interfaces;
 using SGMLoquinho.Infrastructure.Repositories.Repository;
 
 namespace SGMLoquinho.CrossCutting
@@ -10,10 +12,11 @@ namespace SGMLoquinho.CrossCutting
         public static void RegisterServices(IServiceCollection services)
         {
             //Services
-            services.AddScoped<ApplicationServices.Interfaces.IClienteServices, ClienteServices>();
-
+            services.AddScoped<IClienteServices, ClienteServices>();
+            services.AddScoped<IRhColaboradoresServices, RhColaboradoresServices>();
             //Repositories
-            services.AddScoped<Infrastructure.Repositories.Interfaces.IClienteRepository, ClienteRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IRhColaboradoresRepository, RhColaboradoresRepository>();
 
             //Infrastructure
             services.AddScoped<SGMLoquinhoContext>();
