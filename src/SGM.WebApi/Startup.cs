@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SGMLoquinho.ApplicationServices.AutoMapper;
-using SGMLoquinho.CrossCutting;
-using SGMLoquinho.Domain.ValueObjects;
+using SGM.ApplicationServices.AutoMapper;
+using SGM.CrossCutting;
+using SGM.Domain.ValueObjects;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace SGM.WebApi
@@ -30,7 +30,7 @@ namespace SGM.WebApi
                 x.SwaggerDoc("v1",
                     new Info
                     {
-                        Title = "API para funcionamento das aplicações WEB e App do SGMLoquinho",
+                        Title = "API para funcionamento das aplicações WEB e App do SGM",
                         Version = "1.0.0.0",
                         Description = "Aqui é possível cadastrar todos os tipos de informações do sistema SGM",
                         Contact = new Contact

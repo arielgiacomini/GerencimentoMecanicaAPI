@@ -13,15 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - CrossCutting", "5 - CrossCutting", "{1676248F-736E-482F-8D31-D58B32529D2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGMLoquinho.Domain", "src\SGMLoquinho.Domain\SGMLoquinho.Domain.csproj", "{44C64150-ED8A-4B47-B774-81E25D3590BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Domain", "src\SGM.Domain\SGM.Domain.csproj", "{44C64150-ED8A-4B47-B774-81E25D3590BF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGMLoquinho.Infrastructure", "src\SGMLoquinho.Infrastructure\SGMLoquinho.Infrastructure.csproj", "{E6015997-F1BC-4C2D-9C93-84FCF6023AA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.Infrastructure", "src\SGM.Infrastructure\SGM.Infrastructure.csproj", "{E6015997-F1BC-4C2D-9C93-84FCF6023AA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGMLoquinho.ApplicationServices", "src\SGMLoquinho.ApplicationServices\SGMLoquinho.ApplicationServices.csproj", "{C608D1EB-212C-4D7E-AEA5-8BAE892A9B0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.ApplicationServices", "src\SGM.ApplicationServices\SGM.ApplicationServices.csproj", "{C608D1EB-212C-4D7E-AEA5-8BAE892A9B0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGMLoquinho.CrossCutting", "src\SGMLoquinho.CrossCutting\SGMLoquinho.CrossCutting.csproj", "{874BB8FD-989B-42DF-99CD-D7FA7F353ADA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.CrossCutting", "src\SGM.CrossCutting\SGM.CrossCutting.csproj", "{874BB8FD-989B-42DF-99CD-D7FA7F353ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGM.WebApi", "src\SGM.WebApi\SGM.WebApi.csproj", "{26792855-DC5B-483F-B5C9-DFA9A7017B33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGM.WebApi", "src\SGM.WebApi\SGM.WebApi.csproj", "{26792855-DC5B-483F-B5C9-DFA9A7017B33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
