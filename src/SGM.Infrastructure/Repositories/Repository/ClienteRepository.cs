@@ -28,6 +28,9 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public void Salvar(Cliente entidade)
         {
+            entidade.DataCadastro = DateTime.Now;
+            entidade.ClienteAtivo = true;
+
             _SGMContext.Cliente.Add(entidade);
             _SGMContext.SaveChanges();
         }

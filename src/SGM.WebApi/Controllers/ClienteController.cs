@@ -72,7 +72,7 @@ namespace SGM.WebApi.Controllers
                 _clienteServices.Atualizar(model);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(500);
             }
