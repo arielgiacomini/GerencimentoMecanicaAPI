@@ -9,10 +9,10 @@ namespace SGMLoquinho.ApplicationServices.Services
 {
     public class RhColaboradoresServices : IRhColaboradoresServices
     {
-        private readonly IRhColaboradoresRepository _rhColaboradoresRepository;
+        private readonly IColaboradorRepository _rhColaboradoresRepository;
         private readonly IMapper _mapper;
 
-        public RhColaboradoresServices(IRhColaboradoresRepository rhColaboradoresRepository, IMapper mapper)
+        public RhColaboradoresServices(IColaboradorRepository rhColaboradoresRepository, IMapper mapper)
         {
             _rhColaboradoresRepository = rhColaboradoresRepository;
             _mapper = mapper;
@@ -25,7 +25,7 @@ namespace SGMLoquinho.ApplicationServices.Services
 
         public void Salvar(RhColaboradoresViewModel model)
         {
-            var entidade = _mapper.Map<RhColaboradores>(model);
+            var entidade = _mapper.Map<Colaborador>(model);
             _rhColaboradoresRepository.Salvar(entidade);
         }
     }

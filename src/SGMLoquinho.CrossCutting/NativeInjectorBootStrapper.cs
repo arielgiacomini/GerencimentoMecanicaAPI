@@ -16,7 +16,7 @@ namespace SGMLoquinho.CrossCutting
             services.AddScoped<IRhColaboradoresServices, RhColaboradoresServices>();
             //Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
-            services.AddScoped<IRhColaboradoresRepository, RhColaboradoresRepository>();
+            services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
 
             //Infrastructure
             services.AddScoped<SGMLoquinhoContext>();

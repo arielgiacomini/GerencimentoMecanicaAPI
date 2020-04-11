@@ -15,19 +15,19 @@ namespace SGMLoquinho.Infrastructure.Context
         }
 
         public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<RhColaboradores> RhColaboradores { get; set; }
+        public DbSet<Colaborador> Colaborador { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMapping());
-            modelBuilder.ApplyConfiguration(new RhColaboradoresMapping());
+            modelBuilder.ApplyConfiguration(new ColaboradorMapping());
 
             base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(_connectionKeys.SGMLoquinhoConnection);
+            optionsBuilder.UseSqlServer(_connectionKeys.SgmConnection);
             base.OnConfiguring(optionsBuilder);
         }
     }

@@ -22,6 +22,9 @@ namespace SGMLoquinho.Domain.Entities
         public string LogradouroMunicipio { get; set; }
         public string LogradouroBairro { get; set; }
         public string LogradouroUF { get; set; }
-        //public IEnumerable<ClienteVeiculo> ClienteVeiculo { get; set; }
+        public bool RecebeNotificacoes { get; set; }
+        public bool ClienteAtivo { get; set; }
+        public DateTime? DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }
     }
 }

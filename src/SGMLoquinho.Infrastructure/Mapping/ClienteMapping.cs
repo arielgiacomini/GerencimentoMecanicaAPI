@@ -28,6 +28,9 @@ namespace SGMLoquinho.Infrastructure.Mapping
             builder.Property(x => x.LogradouroMunicipio);
             builder.Property(x => x.LogradouroBairro);
             builder.Property(x => x.LogradouroUF);
+            builder.Property(x => x.RecebeNotificacoes);
+            builder.Property(x => x.DataCadastro);
+            builder.Property(x => x.DataAlteracao);
         }
     }
 }

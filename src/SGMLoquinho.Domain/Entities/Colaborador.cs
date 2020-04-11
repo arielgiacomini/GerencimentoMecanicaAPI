@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SGMLoquinho.ApplicationServices.ViewModels
+namespace SGMLoquinho.Domain.Entities
 {
-    public class RhColaboradoresViewModel
+    public class Colaborador
     {
         public int ColaboradorId { get; set; }
         public string Usuario { get; set; }

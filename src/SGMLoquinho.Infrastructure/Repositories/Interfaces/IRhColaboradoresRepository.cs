@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace SGMLoquinho.Infrastructure.Repositories.Interfaces
 {
-    public interface IRhColaboradoresRepository
+    public interface IColaboradorRepository
     {
-        IEnumerable<RhColaboradores> GetByAll();
-        void Salvar(RhColaboradores entidade);
+        IEnumerable<Colaborador> GetByAll();
+        void Salvar(Colaborador entidade);
     }
 }

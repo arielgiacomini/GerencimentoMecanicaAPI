@@ -2,6 +2,6 @@
 {
     public class ConnectionStrings
     {
-        public string SGMLoquinhoConnection { get; set; }
+        public string SgmConnection { get; set; }
     }
 }

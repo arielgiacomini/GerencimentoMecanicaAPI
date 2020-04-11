@@ -9,8 +9,8 @@ namespace SGMLoquinho.Infrastructure.Mapping
         public void Configure(EntityTypeBuilder<Veiculo> builder)
         {
             builder.ToTable("Veiculo");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.HasKey(x => x.VeiculoId);
+            builder.Property(x => x.VeiculoId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.Marca);
             builder.Property(x => x.Modelo);
         }
