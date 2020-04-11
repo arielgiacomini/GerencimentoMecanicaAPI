@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SGMLoquinho.ApplicationServices.Interfaces;
-using SGMLoquinho.ApplicationServices.ViewModels;
+using SGM.ApplicationServices.Interfaces;
+using SGM.ApplicationServices.ViewModels;
 using System;
 
 namespace SGM.WebApi.Controllers
 {
     [ApiController]
-    [Route("sgmloquinho")]
+    [Route("SGM")]
     [Produces("application/json")]
     public class ClienteController : ControllerBase
     {
@@ -72,7 +72,7 @@ namespace SGM.WebApi.Controllers
                 _clienteServices.Atualizar(model);
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(500);
             }

@@ -3,7 +3,7 @@
 namespace SGM.WebApi.Controllers
 {
     [ApiController]
-    [Route("sgmloquinho")]
+    [Route("SGM")]
     [Produces("application/json")]
     public class VeiculoController : ControllerBase
     {

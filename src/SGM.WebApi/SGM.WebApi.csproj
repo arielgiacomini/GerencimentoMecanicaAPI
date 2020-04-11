@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SGMLoquinho.ApplicationServices\SGMLoquinho.ApplicationServices.csproj" />
-    <ProjectReference Include="..\SGMLoquinho.CrossCutting\SGMLoquinho.CrossCutting.csproj" />
-    <ProjectReference Include="..\SGMLoquinho.Domain\SGMLoquinho.Domain.csproj" />
+    <ProjectReference Include="..\SGM.ApplicationServices\SGM.ApplicationServices.csproj" />
+    <ProjectReference Include="..\SGM.CrossCutting\SGM.CrossCutting.csproj" />
+    <ProjectReference Include="..\SGM.Domain\SGM.Domain.csproj" />
   </ItemGroup>
 
 </Project>
