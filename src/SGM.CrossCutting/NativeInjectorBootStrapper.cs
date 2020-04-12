@@ -13,7 +13,7 @@ namespace SGM.CrossCutting
         {
             //Services
             services.AddScoped<IClienteServices, ClienteServices>();
-            services.AddScoped<IRhColaboradoresServices, RhColaboradoresServices>();
+            services.AddScoped<IColaboradorServices, ColaboradorServices>();
             //Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
