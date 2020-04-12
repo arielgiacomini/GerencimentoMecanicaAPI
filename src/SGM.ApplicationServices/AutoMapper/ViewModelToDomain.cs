@@ -9,7 +9,7 @@ namespace SGM.ApplicationServices.AutoMapper
         public ViewModelToDomain()
         {
             CreateMap<ClienteViewModel, Cliente>();
-            CreateMap<RhColaboradoresViewModel, Colaborador>();
+            CreateMap<ColaboradorViewModel, Colaborador>();
         }
     }
 }

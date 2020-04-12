@@ -6,6 +6,8 @@ namespace SGM.Infrastructure.Repositories.Interfaces
     public interface IColaboradorRepository
     {
         IEnumerable<Colaborador> GetByAll();
-        void Salvar(Colaborador entidade);
+        Colaborador GetById(int colaboradorId);
+        void Salvar(Colaborador model);
+        void Atualizar(Colaborador model);
     }
 }
