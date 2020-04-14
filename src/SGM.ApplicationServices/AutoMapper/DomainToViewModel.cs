@@ -10,6 +10,7 @@ namespace SGM.ApplicationServices.AutoMapper
         {
             CreateMap<Cliente, ClienteViewModel>();
             CreateMap<Colaborador, ColaboradorViewModel>();
+            CreateMap<Orcamento, OrcamentoViewModel>();
         }
     }
 }

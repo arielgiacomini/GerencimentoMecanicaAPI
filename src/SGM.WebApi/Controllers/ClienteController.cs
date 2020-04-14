@@ -34,7 +34,7 @@ namespace SGM.WebApi.Controllers
 
         [HttpGet]
         [Route("cliente/{clienteId}")]
-        public IActionResult GetClientesForAll(int clienteId)
+        public IActionResult GetClientesById(int clienteId)
         {
             try
             {

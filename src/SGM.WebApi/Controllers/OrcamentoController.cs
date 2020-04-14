@@ -8,23 +8,23 @@ namespace SGM.WebApi.Controllers
     [ApiController]
     [Route("SGM")]
     [Produces("application/json")]
-    public class ColaboradorController : ControllerBase
+    public class OrcamentoController : ControllerBase
     {
-        private readonly IColaboradorServices _colaboradorServices;
+        private readonly IOrcamentoServices _orcamentoServices;
 
-        public ColaboradorController(IColaboradorServices colaboradorServices)
+        public OrcamentoController(IOrcamentoServices orcamentoServices)
         {
-            _colaboradorServices = colaboradorServices;
+            _orcamentoServices = orcamentoServices;
         }
 
         [HttpGet]
-        [Route("colaborador")]
-        public IActionResult GetClientesForAll()
+        [Route("orcamento")]
+        public IActionResult GetOrcamentosForAll()
         {
             try
             {
-                var clientes = _colaboradorServices.GetByAll();
-                return Ok(clientes);
+                var orcamento = _orcamentoServices.GetByAll();
+                return Ok(orcamento);
             }
             catch (Exception ex)
             {
@@ -33,13 +33,13 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("colaborador/{colaboradorId}")]
-        public IActionResult GetClientesById(int colaboradorId)
+        [Route("orcamento/{orcamentoId}")]
+        public IActionResult GetOrcamentosById(int orcamentoId)
         {
             try
             {
-                var colaborador = _colaboradorServices.GetById(colaboradorId);
-                return Ok(colaborador);
+                var orcamento = _orcamentoServices.GetById(orcamentoId);
+                return Ok(orcamento);
             }
             catch (Exception)
             {
@@ -48,12 +48,12 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpPost]
-        [Route("colaborador")]
-        public IActionResult Salvar(ColaboradorViewModel model)
+        [Route("orcamento")]
+        public IActionResult Salvar(OrcamentoViewModel model)
         {
             try
             {
-                _colaboradorServices.Salvar(model);
+                _orcamentoServices.AtualizarOrSalvar(model);
                 return Ok();
             }
             catch (Exception ex)
@@ -63,13 +63,13 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpPut]
-        [Route("colaborador/{colaboradorId}")]
-        public IActionResult Atualizar(int colaboradorId, ColaboradorViewModel model)
+        [Route("orcamento/{orcamentoId}")]
+        public IActionResult Atualizar(int orcamentoId, OrcamentoViewModel model)
         {
             try
             {
-                model.ColaboradorId = colaboradorId;
-                _colaboradorServices.Atualizar(model);
+                model.OrcamentoId = orcamentoId;
+                _orcamentoServices.AtualizarOrSalvar(model);
                 return Ok();
             }
             catch (Exception ex)
