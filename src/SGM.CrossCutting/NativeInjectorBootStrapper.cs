@@ -14,9 +14,11 @@ namespace SGM.CrossCutting
             //Services
             services.AddScoped<IClienteServices, ClienteServices>();
             services.AddScoped<IColaboradorServices, ColaboradorServices>();
+            services.AddScoped<IOrcamentoServices, OrcamentoServices>();
             //Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+            services.AddScoped<IOrcamentoRepository, OrcamentoRepository>();
 
             //Infrastructure
             services.AddScoped<SGMContext>();
