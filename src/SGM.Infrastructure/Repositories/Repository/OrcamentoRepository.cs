@@ -1,4 +1,5 @@
 ﻿using SGM.Domain.Entities;
+using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System.Collections.Generic;
@@ -18,6 +19,24 @@ namespace SGM.Infrastructure.Repositories.Repository
         public IEnumerable<Orcamento> GetByAll()
         {
             return _SGMContext.Orcamento.ToList();
+        }
+
+        public IEnumerable<Orcamento> GetByAllPaginado(int page)
+        {
+
+            return _SGMContext.Orcamento.Skip((page - 1) * 5).Take(5).ToList();
+        }
+
+        public Count GetCount()
+        {
+            var contagem = _SGMContext.Orcamento.Count();
+
+            Count cont = new Count();
+            {
+                cont.Contagem = contagem;
+            }
+
+            return cont;
         }
 
         public Orcamento GetById(int orcamentoId)

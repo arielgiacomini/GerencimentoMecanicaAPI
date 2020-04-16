@@ -3,6 +3,7 @@ using SGM.ApplicationServices.Interfaces;
 using SGM.ApplicationServices.ViewModels;
 using SGM.Domain.Entities;
 using SGM.Domain.Enuns;
+using SGM.Domain.Utils;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,16 @@ namespace SGM.ApplicationServices.Services
         public IEnumerable<OrcamentoViewModel> GetByAll()
         {
             return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAll());
+        }
+
+        public IEnumerable<OrcamentoViewModel> GetByAllPaginado(int page)
+        {
+            return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
+        }
+
+        public Count GetCount()
+        {
+            return _mapper.Map<Count>(_orcamentoRepository.GetCount());
         }
 
         public OrcamentoViewModel GetById(int orcamentoId)
