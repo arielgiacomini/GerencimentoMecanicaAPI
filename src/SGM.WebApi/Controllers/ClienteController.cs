@@ -28,7 +28,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
 
@@ -41,9 +41,9 @@ namespace SGM.WebApi.Controllers
                 var clientes = _clienteServices.GetById(clienteId);
                 return Ok(clientes);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
 
@@ -58,7 +58,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
 
@@ -74,7 +74,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
     }

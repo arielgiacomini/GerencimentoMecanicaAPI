@@ -19,7 +19,6 @@ namespace SGM.CrossCutting
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
             services.AddScoped<IOrcamentoRepository, OrcamentoRepository>();
-
             //Infrastructure
             services.AddScoped<SGMContext>();
         }

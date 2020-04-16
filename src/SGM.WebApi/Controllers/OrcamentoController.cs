@@ -28,7 +28,25 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("orcamento/paginado/{page}")]
+        public IActionResult GetOrcamentosForAllPaginado(int page)
+        {
+            try
+            {
+                var count = _orcamentoServices.GetCount();
+
+                var pagina = page;
+                var orcamento = _orcamentoServices.GetByAllPaginado(page);
+                return Ok(orcamento);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
             }
         }
 
@@ -41,9 +59,9 @@ namespace SGM.WebApi.Controllers
                 var orcamento = _orcamentoServices.GetById(orcamentoId);
                 return Ok(orcamento);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
 
@@ -58,7 +76,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
 
@@ -74,7 +92,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                return StatusCode(500, ex);
             }
         }
     }
