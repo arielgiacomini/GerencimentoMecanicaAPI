@@ -17,9 +17,6 @@ namespace SGM.Infrastructure.Mapping
             builder.Property(x => x.ValorFrete);
             builder.Property(x => x.Ativo);
             builder.Property(x => x.DataCadastro);
-            
         }
-
     }
-
 }

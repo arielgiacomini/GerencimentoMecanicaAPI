@@ -18,6 +18,7 @@ namespace SGM.Infrastructure.Context
         public DbSet<Colaborador> Colaborador { get; set; }
         public DbSet<Orcamento> Orcamento { get; set; }
         public DbSet<MaodeObra> MaodeObra { get; set; }
+        public DbSet<Peca> Peca { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
