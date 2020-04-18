@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
+using SGM.ApplicationServices.Interfaces;
 using SGM.ApplicationServices.ViewModels;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
-using SGM.Domain;
-using SGM.ApplicationServices.Interfaces;
 
 namespace SGM.ApplicationServices.Services
 {
