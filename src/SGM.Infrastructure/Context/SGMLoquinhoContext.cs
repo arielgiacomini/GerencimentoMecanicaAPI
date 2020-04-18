@@ -24,6 +24,7 @@ namespace SGM.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new ClienteMapping());
             modelBuilder.ApplyConfiguration(new ColaboradorMapping());
             modelBuilder.ApplyConfiguration(new OrcamentoMapping());
+            modelBuilder.ApplyConfiguration(new PecaMapping());
             modelBuilder.ApplyConfiguration(new MaodeObraMapping());
 
             base.OnModelCreating(modelBuilder);
