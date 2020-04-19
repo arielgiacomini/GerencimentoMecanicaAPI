@@ -11,6 +11,8 @@ namespace SGM.Infrastructure.Mapping
             builder.ToTable("Orcamento");
             builder.HasKey(x => x.OrcamentoId);
             builder.Property(x => x.OrcamentoId).IsRequired().ValueGeneratedOnAdd();
+            builder.Property(x => x.ClienteId);
+            builder.Property(x => x.VeiculoId);
             builder.Property(x => x.Descricao);
             builder.Property(x => x.ValorAdicional);
             builder.Property(x => x.PercentualDesconto);

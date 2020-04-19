@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SGM.ApplicationServices.Interfaces;
 using SGM.ApplicationServices.ViewModels;
+using SGM.ApplicationServices.ViewModels.Orcamentos;
 using SGM.Domain.Entities;
 using SGM.Domain.Enuns;
 using SGM.Domain.Utils;
@@ -26,9 +27,9 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAll());
         }
 
-        public IEnumerable<OrcamentoViewModel> GetByAllPaginado(int page)
+        public IEnumerable<ClienteOrcamentosViewModel> GetByAllPaginado(int page)
         {
-            return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
+            return _mapper.Map<IEnumerable<ClienteOrcamentosViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
         }
 
         public Count GetCount()
@@ -50,6 +51,7 @@ namespace SGM.ApplicationServices.Services
                 _orcamentoRepository.Salvar(new Orcamento()
                 {
                     ClienteId = model.ClienteId,
+                    VeiculoId = model.VeiculoId,
                     Descricao = model.Descricao,
                     ValorAdicional = model.ValorAdicional,
                     PercentualDesconto = model.PercentualDesconto,
