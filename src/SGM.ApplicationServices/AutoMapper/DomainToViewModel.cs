@@ -16,6 +16,7 @@ namespace SGM.ApplicationServices.AutoMapper
             CreateMap<Peca, PecaViewModel>();
             CreateMap<MaodeObra, MaodeObraViewModel>();
             CreateMap<ClienteOrcamentos, ClienteOrcamentosViewModel>();
+            CreateMap<Veiculo, VeiculoViewModel>();
         }
     }
 }
