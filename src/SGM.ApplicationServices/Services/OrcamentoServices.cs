@@ -27,11 +27,6 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAll());
         }
 
-        public IEnumerable<ClienteOrcamentosViewModel> GetByAllPaginado(int page)
-        {
-            return _mapper.Map<IEnumerable<ClienteOrcamentosViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
-        }
-
         public Count GetCount()
         {
             return _mapper.Map<Count>(_orcamentoRepository.GetCount());
@@ -76,6 +71,11 @@ namespace SGM.ApplicationServices.Services
                     Ativo = model.Ativo
                 });
             }
+        }
+
+        public IEnumerable<ClienteOrcamentosViewModel> GetByAllPaginado(int page)
+        {
+            return _mapper.Map<IEnumerable<ClienteOrcamentosViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
         }
     }
 }

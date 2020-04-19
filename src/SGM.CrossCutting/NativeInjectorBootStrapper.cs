@@ -17,12 +17,14 @@ namespace SGM.CrossCutting
             services.AddScoped<IOrcamentoServices, OrcamentoServices>();
             services.AddScoped<IPecaServices, PecaServices>();
             services.AddScoped<IMaodeObraServices, MaodeObraServices>();
+            services.AddScoped<IVeiculoServices, VeiculoServices>();
             //Repositories
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
             services.AddScoped<IOrcamentoRepository, OrcamentoRepository>();
             services.AddScoped<IMaodeObraRepository, MaodeObraRepository>();
             services.AddScoped<IPecaRepository, PecaRepository>();
+            services.AddScoped<IVeiculoRepository, VeiculoRepository>();
             //Infrastructure
             services.AddScoped<SGMContext>();
         }

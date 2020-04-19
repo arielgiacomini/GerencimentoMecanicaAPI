@@ -22,38 +22,6 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Orcamento.ToList();
         }
 
-        public IEnumerable<ClienteOrcamentos> GetByAllPaginado(int page)
-        {
-            var clienteOrcamentos = _SGMContext.Cliente.GroupJoin(_SGMContext.Orcamento, s => s.ClienteId, f => f.ClienteId,
-                                                                                                                 (f, orcamentosCliente) => new ClienteOrcamentos
-                                                                                                                 {
-                                                                                                                     Orcamentos = orcamentosCliente,
-                                                                                                                     ClienteId = f.ClienteId,
-                                                                                                                     NomeCliente = f.NomeCliente,
-                                                                                                                     Apelido = f.Apelido,
-                                                                                                                     DocumentoCliente = f.DocumentoCliente,
-                                                                                                                     Sexo = f.Sexo,
-                                                                                                                     EstadoCivil = f.EstadoCivil,
-                                                                                                                     DataNascimento = f.DataNascimento,
-                                                                                                                     Email = f.Email,
-                                                                                                                     TelefoneFixo = f.TelefoneFixo,
-                                                                                                                     TelefoneCelular = f.TelefoneCelular,
-                                                                                                                     TelefoneOutros = f.TelefoneOutros,
-                                                                                                                     LogradouroCEP = f.LogradouroCEP,
-                                                                                                                     LogradouroNome = f.LogradouroNome,
-                                                                                                                     LogradouroNumero = f.LogradouroNumero,
-                                                                                                                     LogradouroComplemento = f.LogradouroComplemento,
-                                                                                                                     LogradouroMunicipio = f.LogradouroMunicipio,
-                                                                                                                     LogradouroBairro = f.LogradouroBairro,
-                                                                                                                     LogradouroUF = f.LogradouroUF,
-                                                                                                                     RecebeNotificacoes = f.RecebeNotificacoes,
-                                                                                                                     ClienteAtivo = f.ClienteAtivo,
-                                                                                                                     DataAlteracao = f.DataAlteracao
-                                                                                                                 });
-
-            return clienteOrcamentos.Skip((page - 1) * 5).Take(5).ToList();
-        }
-
         public Count GetCount()
         {
             var contagem = _SGMContext.Orcamento.Count();
@@ -92,6 +60,43 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             _SGMContext.Update(orcamento);
             _SGMContext.SaveChanges();
+        }
+
+        public IEnumerable<ClienteOrcamentos> GetByAllPaginado(int page)
+        {
+            var clienteOrcamentos =
+                _SGMContext
+                .Cliente
+                .GroupJoin(
+                        _SGMContext
+                        .Orcamento, s => s.ClienteId, f => f.ClienteId,
+                        (f, orcamentosCliente) => new ClienteOrcamentos
+                        {
+                            Orcamentos = orcamentosCliente,
+                            ClienteId = f.ClienteId,
+                            NomeCliente = f.NomeCliente,
+                            Apelido = f.Apelido,
+                            DocumentoCliente = f.DocumentoCliente,
+                            Sexo = f.Sexo,
+                            EstadoCivil = f.EstadoCivil,
+                            DataNascimento = f.DataNascimento,
+                            Email = f.Email,
+                            TelefoneFixo = f.TelefoneFixo,
+                            TelefoneCelular = f.TelefoneCelular,
+                            TelefoneOutros = f.TelefoneOutros,
+                            LogradouroCEP = f.LogradouroCEP,
+                            LogradouroNome = f.LogradouroNome,
+                            LogradouroNumero = f.LogradouroNumero,
+                            LogradouroComplemento = f.LogradouroComplemento,
+                            LogradouroMunicipio = f.LogradouroMunicipio,
+                            LogradouroBairro = f.LogradouroBairro,
+                            LogradouroUF = f.LogradouroUF,
+                            RecebeNotificacoes = f.RecebeNotificacoes,
+                            ClienteAtivo = f.ClienteAtivo,
+                            DataAlteracao = f.DataAlteracao
+                        });
+
+            return clienteOrcamentos.Skip((page - 1) * 5).Take(5).ToList();
         }
     }
 }
