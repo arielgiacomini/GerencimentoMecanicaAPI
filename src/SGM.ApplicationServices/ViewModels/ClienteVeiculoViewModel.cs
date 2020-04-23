@@ -9,7 +9,6 @@
         public string PlacaVeiculo { get; set; }
         public string CorVeiculo { get; set; }
         public int KmRodados { get; set; }
-        public virtual ClienteViewModel Cliente { get; set; }
         public virtual VeiculoViewModel Veiculo { get; set; }
     }
 }
