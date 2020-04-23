@@ -20,6 +20,7 @@ namespace SGM.Infrastructure.Context
         public DbSet<MaodeObra> MaodeObra { get; set; }
         public DbSet<Peca> Peca { get; set; }
         public DbSet<Veiculo> Veiculo { get; set; }
+        public DbSet<ClienteVeiculo> ClienteVeiculo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,7 @@ namespace SGM.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new PecaMapping());
             modelBuilder.ApplyConfiguration(new MaodeObraMapping());
             modelBuilder.ApplyConfiguration(new VeiculoMapping());
+            modelBuilder.ApplyConfiguration(new ClienteVeiculoMapping());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -17,6 +17,8 @@ namespace SGM.WebApi.Controllers
             _clienteServices = clienteServices;
         }
 
+        #region Cliente
+
         [HttpGet]
         [Route("cliente")]
         public IActionResult GetClientesForAll()
@@ -77,5 +79,32 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        #endregion
+
+        #region ClienteVeiculos
+
+        [HttpGet]
+        [Route("cliente/veiculo/paginado/{page}")]
+        public IActionResult GetOrcamentosForAllPaginado(int page)
+        {
+            try
+            {
+                var count = _clienteServices.GetCount();
+
+                HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
+
+                var pagina = page;
+                var clienteVeiculos = _clienteServices.GetByAllPaginado(page);
+                return Ok(clienteVeiculos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        #endregion
+
     }
 }

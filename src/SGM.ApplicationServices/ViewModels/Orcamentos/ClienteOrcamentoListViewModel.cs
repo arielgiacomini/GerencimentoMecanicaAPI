@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SGM.Domain.Entities.Orcamentos
+namespace SGM.ApplicationServices.ViewModels.Orcamentos
 {
-    public class ClienteOrcamentos
+    public class ClienteOrcamentoListViewModel
     {
         public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
@@ -27,6 +27,6 @@ namespace SGM.Domain.Entities.Orcamentos
         public bool ClienteAtivo { get; set; }
         public DateTime? DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
-        public IEnumerable<Orcamento> Orcamentos { get; set; }
+        public IEnumerable<OrcamentoViewModel> Orcamentos { get; set; }
     }
 }

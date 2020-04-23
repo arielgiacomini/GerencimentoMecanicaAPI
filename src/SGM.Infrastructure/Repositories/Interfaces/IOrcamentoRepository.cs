@@ -8,7 +8,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
     public interface IOrcamentoRepository
     {
         IEnumerable<Orcamento> GetByAll();
-        IEnumerable<ClienteOrcamentos> GetByAllPaginado(int page);
+        IEnumerable<ClienteOrcamentoList> GetByAllPaginado(int page);
         Count GetCount();
         Orcamento GetById(int orcamentoId);
         void Salvar(Orcamento model);
