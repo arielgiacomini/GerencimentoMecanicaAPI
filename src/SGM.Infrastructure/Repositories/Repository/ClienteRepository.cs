@@ -1,4 +1,6 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
+using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System;
@@ -24,6 +26,18 @@ namespace SGM.Infrastructure.Repositories.Repository
         public Cliente GetById(int clienteId)
         {
             return _SGMContext.Cliente.Where(x => x.ClienteId == clienteId).FirstOrDefault();
+        }
+
+        public Count GetCount()
+        {
+            var contagem = _SGMContext.Cliente.Count();
+
+            Count cont = new Count();
+            {
+                cont.Contagem = contagem;
+            }
+
+            return cont;
         }
 
         public void Salvar(Cliente entidade)
@@ -61,6 +75,13 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             _SGMContext.Update(cliente);
             _SGMContext.SaveChanges();
+        }
+
+        public IEnumerable<Cliente> GetByAllPaginado(int page)
+        {
+            var clienteSeusVeiculos = _SGMContext.Cliente.Include(x => x.ClienteVeiculo).ThenInclude(f => f.Veiculo).ToList();
+
+            return clienteSeusVeiculos; //clienteSeusVeiculos.Skip((page - 1) * 5).Take(5).ToList();
         }
     }
 }

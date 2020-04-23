@@ -62,7 +62,7 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
-        public IEnumerable<ClienteOrcamentos> GetByAllPaginado(int page)
+        public IEnumerable<ClienteOrcamentoList> GetByAllPaginado(int page)
         {
             var clienteOrcamentos =
                 _SGMContext
@@ -70,7 +70,7 @@ namespace SGM.Infrastructure.Repositories.Repository
                 .GroupJoin(
                         _SGMContext
                         .Orcamento, s => s.ClienteId, f => f.ClienteId,
-                        (f, orcamentosCliente) => new ClienteOrcamentos
+                        (f, orcamentosCliente) => new ClienteOrcamentoList
                         {
                             Orcamentos = orcamentosCliente,
                             ClienteId = f.ClienteId,

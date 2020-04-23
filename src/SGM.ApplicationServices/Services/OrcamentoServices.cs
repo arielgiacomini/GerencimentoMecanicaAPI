@@ -73,9 +73,9 @@ namespace SGM.ApplicationServices.Services
             }
         }
 
-        public IEnumerable<ClienteOrcamentosViewModel> GetByAllPaginado(int page)
+        public IEnumerable<ClienteOrcamentoListViewModel> GetByAllPaginado(int page)
         {
-            return _mapper.Map<IEnumerable<ClienteOrcamentosViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
+            return _mapper.Map<IEnumerable<ClienteOrcamentoListViewModel>>(_orcamentoRepository.GetByAllPaginado(page));
         }
     }
 }

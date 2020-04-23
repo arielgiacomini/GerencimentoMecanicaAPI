@@ -2,6 +2,7 @@
 using SGM.ApplicationServices.Interfaces;
 using SGM.ApplicationServices.ViewModels;
 using SGM.Domain.Entities;
+using SGM.Domain.Utils;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ namespace SGM.ApplicationServices.Services
         public ClienteViewModel GetById(int clienteId)
         {
             return _mapper.Map<ClienteViewModel>(_clienteRepository.GetById(clienteId));
+        }
+
+        public Count GetCount()
+        {
+            return _mapper.Map<Count>(_clienteRepository.GetCount());
         }
 
         public void Salvar(ClienteViewModel model)
@@ -90,6 +96,11 @@ namespace SGM.ApplicationServices.Services
                     DataAlteracao = DateTime.Now
                 });
             }
+        }
+
+        public IEnumerable<ClienteViewModel> GetByAllPaginado(int page)
+        {
+            return _mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.GetByAllPaginado(page));
         }
     }
 }

@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SGM.ApplicationServices.ViewModels
 {
     public class ClienteViewModel
     {
-        [Key]
         public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
         public string Apelido { get; set; }
@@ -27,9 +25,8 @@ namespace SGM.ApplicationServices.ViewModels
         public string LogradouroUF { get; set; }
         public bool RecebeNotificacoes { get; set; }
         public bool ClienteAtivo { get; set; }
-        [JsonIgnore]
         public DateTime? DataCadastro { get; set; }
-        [JsonIgnore]
         public DateTime? DataAlteracao { get; set; }
+        public virtual IEnumerable<ClienteVeiculoViewModel> ClienteVeiculo { get; set; }
     }
 }

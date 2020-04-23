@@ -8,7 +8,7 @@ namespace SGM.ApplicationServices.Interfaces
     public interface IOrcamentoServices
     {
         IEnumerable<OrcamentoViewModel> GetByAll();
-        IEnumerable<ClienteOrcamentosViewModel> GetByAllPaginado(int page);
+        IEnumerable<ClienteOrcamentoListViewModel> GetByAllPaginado(int page);
         Count GetCount();
         OrcamentoViewModel GetById(int orcamentoId);
         void AtualizarOrSalvar(OrcamentoViewModel model);
