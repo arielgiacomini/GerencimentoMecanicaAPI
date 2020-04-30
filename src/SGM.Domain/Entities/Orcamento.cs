@@ -6,7 +6,7 @@ namespace SGM.Domain.Entities
     {
         public int OrcamentoId { get; set; }
         public int ClienteId { get; set; }
-        public int VeiculoId { get; set; }
+        public int ClienteVeiculoId { get; set; }
         public string Descricao { get; set; }
         public decimal ValorAdicional { get; set; }
         public decimal PercentualDesconto { get; set; }
