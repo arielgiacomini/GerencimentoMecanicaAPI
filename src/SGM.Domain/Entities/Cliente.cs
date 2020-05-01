@@ -28,6 +28,5 @@ namespace SGM.Domain.Entities
         public DateTime? DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
         public virtual IEnumerable<ClienteVeiculo> ClienteVeiculo { get; set; }
-        public virtual IEnumerable<Orcamento> Orcamento { get; set; }
     }
 }

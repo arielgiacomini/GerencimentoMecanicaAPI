@@ -82,8 +82,9 @@ namespace SGM.Infrastructure.Repositories.Repository
             var clienteSeusVeiculos = _SGMContext
                                             .Cliente
                                             .Include(x => x.ClienteVeiculo)
-                                            .ThenInclude(f => f.Veiculo)
-                                            .Include(g => g.Orcamento)
+                                            .ThenInclude(g => g.Orcamento)
+                                            .Include(x => x.ClienteVeiculo)
+                                            .ThenInclude(c => c.Veiculo)
                                             .ToList();
 
             return clienteSeusVeiculos.Skip((page - 1) * 5).Take(5).ToList();
