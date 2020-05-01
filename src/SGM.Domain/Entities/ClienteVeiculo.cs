@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SGM.Domain.Entities
 {
@@ -15,5 +16,6 @@ namespace SGM.Domain.Entities
         public virtual Cliente Cliente { get; set; }
         [ForeignKey("VeiculoId")]
         public virtual Veiculo Veiculo { get; set; }
+        public virtual IEnumerable<Orcamento> Orcamento { get; set; }
     }
 }

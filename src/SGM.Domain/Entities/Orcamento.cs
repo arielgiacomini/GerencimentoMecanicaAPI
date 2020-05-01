@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SGM.Domain.Entities
 {
@@ -6,7 +7,7 @@ namespace SGM.Domain.Entities
     {
         public int OrcamentoId { get; set; }
         public int ClienteId { get; set; }
-        public int VeiculoId { get; set; }
+        public int ClienteVeiculoId { get; set; }
         public string Descricao { get; set; }
         public decimal ValorAdicional { get; set; }
         public decimal PercentualDesconto { get; set; }
@@ -15,5 +16,9 @@ namespace SGM.Domain.Entities
         public int StatusId { get; set; }
         public bool Ativo { get; set; }
         public DateTime DataCadastro { get; set; }
+        [ForeignKey("ClienteId")]
+        public virtual Cliente Cliente { get; set; }
+        [ForeignKey("ClienteVeiculoId")]
+        public virtual ClienteVeiculo ClienteVeiculo { get; set; }
     }
 }

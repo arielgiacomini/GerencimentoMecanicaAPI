@@ -33,26 +33,6 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("orcamento/paginado/{page}")]
-        public IActionResult GetOrcamentosForAllPaginado(int page)
-        {
-            try
-            {
-                var count = _orcamentoServices.GetCount();
-
-                HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
-
-                var pagina = page;
-                var orcamento = _orcamentoServices.GetByAllPaginado(page);
-                return Ok(orcamento);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex);
-            }
-        }
-
-        [HttpGet]
         [Route("orcamento/{orcamentoId}")]
         public IActionResult GetOrcamentosById(int orcamentoId)
         {

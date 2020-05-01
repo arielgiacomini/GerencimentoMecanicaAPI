@@ -79,7 +79,13 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<Cliente> GetByAllPaginado(int page)
         {
-            var clienteSeusVeiculos = _SGMContext.Cliente.Include(x => x.ClienteVeiculo).ThenInclude(f => f.Veiculo).ToList();
+            var clienteSeusVeiculos = _SGMContext
+                                            .Cliente
+                                            .Include(x => x.ClienteVeiculo)
+                                            .ThenInclude(g => g.Orcamento)
+                                            .Include(x => x.ClienteVeiculo)
+                                            .ThenInclude(c => c.Veiculo)
+                                            .ToList();
 
             return clienteSeusVeiculos.Skip((page - 1) * 5).Take(5).ToList();
         }
