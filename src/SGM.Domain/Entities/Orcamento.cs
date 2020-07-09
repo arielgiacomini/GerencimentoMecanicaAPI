@@ -13,7 +13,7 @@ namespace SGM.Domain.Entities
         public decimal PercentualDesconto { get; set; }
         public decimal ValorDesconto { get; set; }
         public decimal ValorTotal { get; set; }
-        public int StatusId { get; set; }
+        public int Status { get; set; }
         public bool Ativo { get; set; }
         public DateTime DataCadastro { get; set; }
         [ForeignKey("ClienteId")]

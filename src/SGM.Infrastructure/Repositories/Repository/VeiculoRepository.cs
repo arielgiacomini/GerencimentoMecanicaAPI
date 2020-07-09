@@ -47,7 +47,7 @@ namespace SGM.Infrastructure.Repositories.Repository
         public void Atualizar(Veiculo entidade)
         {
             var orcamento = GetById(entidade.VeiculoId);
-            orcamento.Marca = entidade.Marca;
+            orcamento.MarcaId = entidade.MarcaId;
             orcamento.Modelo = entidade.Modelo;
             orcamento.VeiculoAtivo = entidade.VeiculoAtivo;
 

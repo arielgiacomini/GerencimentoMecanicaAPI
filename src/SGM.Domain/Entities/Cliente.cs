@@ -5,6 +5,36 @@ namespace SGM.Domain.Entities
 {
     public class Cliente
     {
+
+        public Cliente(
+            string nomeCliente, string apelido, string documentoCliente, string sexo, string estadoCivil, DateTime dataNascimento, string email, string telefoneFixo, string telefoneCelular,
+            string telefoneOutros, string logradouroCEP, string logradouroNome, string logradouroNumero, string logradouroComplemento, string logradouroMunicipio, string logradouroBairro,
+            string logradouroUF, bool recebeNotificacao, bool clienteAtivo, DateTime dataCadastro, DateTime? dataAlteracao
+            )
+        {
+            NomeCliente = nomeCliente;
+            Apelido = apelido;
+            DocumentoCliente = documentoCliente;
+            Sexo = sexo;
+            EstadoCivil = estadoCivil;
+            DataNascimento = dataNascimento;
+            Email = email;
+            TelefoneFixo = telefoneFixo;
+            TelefoneCelular = telefoneCelular;
+            TelefoneOutros = telefoneOutros;
+            LogradouroCEP = logradouroCEP;
+            LogradouroNome = logradouroNome;
+            LogradouroNumero = logradouroNumero;
+            LogradouroComplemento = logradouroComplemento;
+            LogradouroMunicipio = logradouroMunicipio;
+            LogradouroBairro = logradouroBairro;
+            LogradouroUF = logradouroUF;
+            RecebeNotificacoes = recebeNotificacao;
+            ClienteAtivo = clienteAtivo;
+            DataCadastro = dataCadastro;
+            DataAlteracao = dataAlteracao;
+        }
+
         public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
         public string Apelido { get; set; }

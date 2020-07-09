@@ -51,7 +51,7 @@ namespace SGM.ApplicationServices.Services
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
-                    StatusId = (int)OrcamentoStatusEnum.OrcamentoGerado,
+                    Status = (int)OrcamentoStatusEnum.OrcamentoGerado,
                     Ativo = true,
                     DataCadastro = DateTime.Now
                 });
@@ -66,7 +66,7 @@ namespace SGM.ApplicationServices.Services
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
-                    StatusId = model.StatusId,
+                    Status = model.Status,
                     Ativo = model.Ativo
                 });
             }
