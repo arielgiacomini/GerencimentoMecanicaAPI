@@ -44,7 +44,7 @@ namespace SGM.ApplicationServices.Services
                 _veiculoRepository.Salvar(new Veiculo()
                 {
                     VeiculoId = model.VeiculoId,
-                    Marca = model.Marca,
+                    MarcaId = model.MarcaId,
                     Modelo = model.Modelo,
                     VeiculoAtivo = true,
                     DataCadastro = DateTime.Now
@@ -55,7 +55,7 @@ namespace SGM.ApplicationServices.Services
                 _veiculoRepository.Atualizar(new Veiculo()
                 {
                     VeiculoId = model.VeiculoId,
-                    Marca = model.Marca,
+                    MarcaId = model.MarcaId,
                     Modelo = model.Modelo,
                     VeiculoAtivo = model.VeiculoAtivo
                 });

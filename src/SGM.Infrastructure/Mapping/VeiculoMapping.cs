@@ -11,7 +11,7 @@ namespace SGM.Infrastructure.Mapping
             builder.ToTable("Veiculo");
             builder.HasKey(x => x.VeiculoId);
             builder.Property(x => x.VeiculoId).IsRequired().ValueGeneratedOnAdd();
-            builder.Property(x => x.Marca);
+            builder.Property(x => x.MarcaId);
             builder.Property(x => x.Modelo);
             builder.Property(x => x.VeiculoAtivo);
             builder.Property(x => x.DataCadastro);

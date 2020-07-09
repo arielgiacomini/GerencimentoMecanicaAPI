@@ -18,7 +18,7 @@ namespace SGM.Infrastructure.Mapping
             builder.Property(x => x.PercentualDesconto);
             builder.Property(x => x.ValorDesconto);
             builder.Property(x => x.ValorTotal);
-            builder.Property(x => x.StatusId);
+            builder.Property(x => x.Status);
             builder.Property(x => x.Ativo);
             builder.Property(x => x.DataCadastro);
         }

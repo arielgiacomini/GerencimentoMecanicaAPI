@@ -54,7 +54,7 @@ namespace SGM.Infrastructure.Repositories.Repository
             orcamento.PercentualDesconto = entidade.PercentualDesconto;
             orcamento.ValorDesconto = entidade.ValorDesconto;
             orcamento.ValorTotal = entidade.ValorTotal;
-            orcamento.StatusId = entidade.StatusId;
+            orcamento.Status = entidade.Status;
             orcamento.Ativo = entidade.Ativo;
 
             _SGMContext.Update(orcamento);
