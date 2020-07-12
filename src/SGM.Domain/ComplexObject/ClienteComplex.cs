@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SGM.Domain.Entities;
+using System;
+using System.Collections.Generic;
 
-namespace SGM.ApplicationServices.ViewModels
+namespace SGM.Domain.ComplexObject
 {
-    public class ClienteViewModel
+    public class ClienteComplex
     {
         public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
@@ -26,5 +28,6 @@ namespace SGM.ApplicationServices.ViewModels
         public bool ClienteAtivo { get; set; }
         public DateTime? DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public virtual IEnumerable<ClienteSeusVeiculos> ClienteVeiculo { get; set; }
     }
 }

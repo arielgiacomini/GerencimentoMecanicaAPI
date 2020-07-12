@@ -44,7 +44,6 @@ namespace SGM.ApplicationServices.Services
             {
                 _orcamentoRepository.Salvar(new Orcamento()
                 {
-                    ClienteId = model.ClienteId,
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     Descricao = model.Descricao,
                     ValorAdicional = model.ValorAdicional,

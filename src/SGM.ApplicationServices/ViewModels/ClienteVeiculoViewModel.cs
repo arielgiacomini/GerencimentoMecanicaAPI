@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace SGM.ApplicationServices.ViewModels
+﻿namespace SGM.ApplicationServices.ViewModels
 {
     public class ClienteVeiculoViewModel
     {
@@ -11,7 +9,5 @@ namespace SGM.ApplicationServices.ViewModels
         public string PlacaVeiculo { get; set; }
         public string CorVeiculo { get; set; }
         public int KmRodados { get; set; }
-        public virtual VeiculoViewModel Veiculo { get; set; }
-        public virtual IEnumerable<OrcamentoViewModel> Orcamento { get; set; }
     }
 }
