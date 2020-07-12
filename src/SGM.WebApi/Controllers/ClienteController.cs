@@ -82,8 +82,9 @@ namespace SGM.WebApi.Controllers
 
         #endregion
 
-        #region ClienteVeiculos
 
+        #region ClienteVeiculos
+        /*
         [HttpGet]
         [Route("cliente/veiculo/paginado/{page}")]
         public IActionResult GetOrcamentosForAllPaginado(int page)
@@ -91,9 +92,9 @@ namespace SGM.WebApi.Controllers
             try
             {
                 var count = _clienteServices.GetCount();
-
+        
                 HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
-
+        
                 var pagina = page;
                 var clienteVeiculos = _clienteServices.GetByAllPaginado(page);
                 return Ok(clienteVeiculos);
@@ -103,7 +104,7 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
-
+        */
         #endregion
 
     }

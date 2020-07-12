@@ -1,5 +1,4 @@
-﻿using SGM.Domain.Entities;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SGM.Domain.ComplexObject

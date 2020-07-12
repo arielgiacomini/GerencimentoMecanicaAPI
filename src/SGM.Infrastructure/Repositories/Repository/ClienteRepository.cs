@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SGM.Domain.ComplexObject;
-using SGM.Domain.Entities;
+﻿using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -78,6 +76,9 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
+        /*
+         * COMENTADO, POIS PARA FUNCIONAR É PRECISO
+         * 
         public IEnumerable<ClienteComplex> GetByAllPaginado(int page)
         {
             var clienteSeusVeiculos = _SGMContext
@@ -90,5 +91,6 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             return clienteSeusVeiculos.Skip((page - 1) * 5).Take(5).ToList();
         }
+        */
     }
 }
