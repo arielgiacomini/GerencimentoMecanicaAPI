@@ -100,9 +100,13 @@ namespace SGM.ApplicationServices.Services
             }
         }
 
+        /*
+         * COMENTADO, POIS PARA FUNCIONAR É PRECISO
+         * 
         public IEnumerable<ClienteViewModel> GetByAllPaginado(int page)
         {
             return _mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.GetByAllPaginado(page));
         }
+        */
     }
 }
