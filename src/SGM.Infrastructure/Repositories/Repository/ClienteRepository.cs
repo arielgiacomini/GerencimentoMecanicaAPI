@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.ComplexObject;
 using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
@@ -77,10 +78,10 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
-        public IEnumerable<Cliente> GetByAllPaginado(int page)
+        public IEnumerable<ClienteComplex> GetByAllPaginado(int page)
         {
             var clienteSeusVeiculos = _SGMContext
-                                            .Cliente
+                                            .ClienteComplex
                                             .Include(x => x.ClienteVeiculo)
                                             .ThenInclude(g => g.Orcamento)
                                             .Include(x => x.ClienteVeiculo)

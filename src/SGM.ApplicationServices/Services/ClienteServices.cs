@@ -47,61 +47,55 @@ namespace SGM.ApplicationServices.Services
 
             if (cliente == null)
             {
-                _clienteRepository.Salvar(
-                    new Cliente
-                        (
-                            model.NomeCliente, 
-                            model.Apelido, 
-                            model.DocumentoCliente, 
-                            model.Sexo, 
-                            model.EstadoCivil, 
-                            model.DataNascimento, 
-                            model.Email, 
-                            model.TelefoneFixo, 
-                            model.TelefoneCelular, 
-                            model.TelefoneOutros, 
-                            model.LogradouroCEP, 
-                            model.LogradouroNome, 
-                            model.LogradouroNumero,
-                            model.LogradouroComplemento, 
-                            model.LogradouroMunicipio, 
-                            model.LogradouroBairro, 
-                            model.LogradouroUF,
-                            model.RecebeNotificacoes,
-                            model.ClienteAtivo,
-                            DateTime.Now, 
-                            null)
-                {
-
+                _clienteRepository.Salvar(new Cliente() 
+                { 
+                    NomeCliente = model.NomeCliente,
+                    Apelido = model.Apelido,
+                    DocumentoCliente = model.DocumentoCliente,
+                    Sexo = model.Sexo,
+                    EstadoCivil = model.EstadoCivil,
+                    DataNascimento = model.DataNascimento,
+                    Email = model.Email,
+                    TelefoneFixo = model.TelefoneFixo,
+                    TelefoneCelular = model.TelefoneCelular,
+                    TelefoneOutros = model.TelefoneOutros,
+                    LogradouroCEP = model.LogradouroCEP,
+                    LogradouroNome = model.LogradouroNome,
+                    LogradouroNumero = model.LogradouroNumero,
+                    LogradouroComplemento = model.LogradouroComplemento,
+                    LogradouroMunicipio = model.LogradouroMunicipio,
+                    LogradouroBairro = model.LogradouroBairro,
+                    LogradouroUF = model.LogradouroUF,
+                    RecebeNotificacoes = model.RecebeNotificacoes,
+                    ClienteAtivo = true,
+                    DataCadastro = DateTime.Now,
+                    DataAlteracao = null
                 });
             }
             else
             {
-                _clienteRepository.Atualizar(new Cliente
-                        (
-                            model.NomeCliente,
-                            model.Apelido,
-                            model.DocumentoCliente,
-                            model.Sexo,
-                            model.EstadoCivil,
-                            model.DataNascimento,
-                            model.Email,
-                            model.TelefoneFixo,
-                            model.TelefoneCelular,
-                            model.TelefoneOutros,
-                            model.LogradouroCEP,
-                            model.LogradouroNome,
-                            model.LogradouroNumero,
-                            model.LogradouroComplemento,
-                            model.LogradouroMunicipio,
-                            model.LogradouroBairro,
-                            model.LogradouroUF,
-                            model.RecebeNotificacoes,
-                            model.ClienteAtivo,
-                            DateTime.Now,
-                            DateTime.Now)
+                _clienteRepository.Atualizar(new Cliente()
                 {
-                
+                    NomeCliente = model.NomeCliente,
+                    Apelido = model.Apelido,
+                    DocumentoCliente = model.DocumentoCliente,
+                    Sexo = model.Sexo,
+                    EstadoCivil = model.EstadoCivil,
+                    DataNascimento = model.DataNascimento,
+                    Email = model.Email,
+                    TelefoneFixo = model.TelefoneFixo,
+                    TelefoneCelular = model.TelefoneCelular,
+                    TelefoneOutros = model.TelefoneOutros,
+                    LogradouroCEP = model.LogradouroCEP,
+                    LogradouroNome = model.LogradouroNome,
+                    LogradouroNumero = model.LogradouroNumero,
+                    LogradouroComplemento = model.LogradouroComplemento,
+                    LogradouroMunicipio = model.LogradouroMunicipio,
+                    LogradouroBairro = model.LogradouroBairro,
+                    LogradouroUF = model.LogradouroUF,
+                    RecebeNotificacoes = model.RecebeNotificacoes,
+                    ClienteAtivo = model.ClienteAtivo,
+                    DataAlteracao = DateTime.Now
                 });
             }
         }

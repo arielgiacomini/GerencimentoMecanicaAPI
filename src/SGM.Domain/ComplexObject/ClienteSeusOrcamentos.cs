@@ -1,8 +1,10 @@
-﻿using System;
+﻿using SGM.Domain.Entities;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SGM.Domain.Entities
+namespace SGM.Domain.ComplexObject
 {
-    public class Orcamento
+    public class ClienteSeusOrcamentos
     {
         public int OrcamentoId { get; set; }
         public int ClienteVeiculoId { get; set; }
@@ -18,5 +20,11 @@ namespace SGM.Domain.Entities
         public bool Ativo { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
+
+        [ForeignKey("ClienteId")]
+        public virtual ClienteComplex Cliente { get; set; }
+
+        [ForeignKey("ClienteVeiculoId")]
+        public virtual ClienteSeusVeiculos ClienteVeiculo { get; set; }
     }
 }

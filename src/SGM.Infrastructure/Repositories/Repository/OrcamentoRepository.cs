@@ -47,7 +47,6 @@ namespace SGM.Infrastructure.Repositories.Repository
         public void Atualizar(Orcamento entidade)
         {
             var orcamento = GetById(entidade.OrcamentoId);
-            orcamento.ClienteId = entidade.ClienteId;
             orcamento.ClienteVeiculoId = entidade.ClienteVeiculoId;
             orcamento.Descricao = entidade.Descricao;
             orcamento.ValorAdicional = entidade.ValorAdicional;
