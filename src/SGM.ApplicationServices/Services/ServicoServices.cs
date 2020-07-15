@@ -10,39 +10,39 @@ using System.Collections.Generic;
 
 namespace SGM.ApplicationServices.Services
 {
-    public class OrcamentoServices : IOrcamentoServices
+    public class ServicoServices : IServicoServices
     {
-        private readonly IOrcamentoRepository _orcamentoRepository;
+        private readonly IServicoRepository _servicoRepository;
         private readonly IMapper _mapper;
 
-        public OrcamentoServices(IOrcamentoRepository orcamentoRepository, IMapper mapper)
+        public ServicoServices(IServicoRepository servicoRepository, IMapper mapper)
         {
-            _orcamentoRepository = orcamentoRepository;
+            _servicoRepository = servicoRepository;
             _mapper = mapper;
         }
 
-        public IEnumerable<OrcamentoViewModel> GetByAll()
+        public IEnumerable<ServicoViewModel> GetByAll()
         {
-            return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAll());
+            return _mapper.Map<IEnumerable<ServicoViewModel>>(_servicoRepository.GetByAll());
+        }
+
+        public ServicoViewModel GetById(int servicoId)
+        {
+            return _mapper.Map<ServicoViewModel>(_servicoRepository.GetById(servicoId));
         }
 
         public Count GetCount()
         {
-            return _mapper.Map<Count>(_orcamentoRepository.GetCount());
+            return _mapper.Map<Count>(_servicoRepository.GetCount());
         }
 
-        public OrcamentoViewModel GetById(int orcamentoId)
+        public void AtualizarOrSalvar(ServicoViewModel model)
         {
-            return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetById(orcamentoId));
-        }
+            var servico = _servicoRepository.GetById(model.ServicoId);
 
-        public void AtualizarOrSalvar(OrcamentoViewModel model)
-        {
-            var orcamento = _orcamentoRepository.GetById(model.OrcamentoId);
-
-            if (orcamento == null)
+            if(servico == null)
             {
-                _orcamentoRepository.Salvar(new Orcamento()
+                _servicoRepository.Salvar(new Servico()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     Descricao = model.Descricao,
@@ -57,9 +57,9 @@ namespace SGM.ApplicationServices.Services
             }
             else
             {
-                _orcamentoRepository.Atualizar(new Orcamento()
+                _servicoRepository.Atualizar(new Servico()
                 {
-                    OrcamentoId = model.OrcamentoId,
+                    ServicoId = model.ServicoId,
                     Descricao = model.Descricao,
                     ValorAdicional = model.ValorAdicional,
                     PercentualDesconto = model.PercentualDesconto,
