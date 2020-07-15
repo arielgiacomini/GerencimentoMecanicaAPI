@@ -76,6 +76,7 @@ namespace SGM.ApplicationServices.Services
             {
                 _clienteRepository.Atualizar(new Cliente()
                 {
+                    ClienteId = cliente.ClienteId,
                     NomeCliente = model.NomeCliente,
                     Apelido = model.Apelido,
                     DocumentoCliente = model.DocumentoCliente,
