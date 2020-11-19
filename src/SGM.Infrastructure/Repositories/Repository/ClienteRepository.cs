@@ -48,6 +48,23 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
+        public Cliente GetClienteByDocumentoCliente(string documentoCliente)
+        {
+            return _SGMContext.Cliente.Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "")).FirstOrDefault();
+        }
+
+        public void InativarCliente(int clienteId)
+        {
+            var cliente = _SGMContext.Cliente.Where(pessoa => pessoa.ClienteId == clienteId).FirstOrDefault();
+
+            cliente.DataAlteracao = DateTime.Now;
+            cliente.ClienteAtivo = false;
+
+            _SGMContext.Update(cliente);
+            _SGMContext.SaveChanges();
+
+        }
+
         public void Atualizar(Cliente entidade)
         {
             var cliente = GetById(entidade.ClienteId);
@@ -74,6 +91,11 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             _SGMContext.Update(cliente);
             _SGMContext.SaveChanges();
+        }
+
+        public IEnumerable<ClienteVeiculo> GetVeiculosClienteByClienteId(int clienteId)
+        {
+            return _SGMContext.ClienteVeiculo.Where(veiculosCliente => veiculosCliente.ClienteId == clienteId).ToList();
         }
 
         /*
