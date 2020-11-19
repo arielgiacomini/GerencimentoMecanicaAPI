@@ -13,6 +13,7 @@ namespace SGM.ApplicationServices.Interfaces
         void Atualizar(ClienteViewModel model);
         IEnumerable<ClienteVeiculoViewModel> GetClienteVeiculoByClienteId(int clienteId);
         ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente);
+        void InativarCliente(int solicitacaoId);
 
         //IEnumerable<ClienteViewModel> GetByAllPaginado(int page);
     }

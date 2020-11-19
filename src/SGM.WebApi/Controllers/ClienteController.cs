@@ -95,6 +95,21 @@ namespace SGM.WebApi.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("cliente/inativar/{clienteId}")]
+        public IActionResult InativarCliente(int clienteId)
+        {
+            try
+            {
+                _clienteServices.InativarCliente(clienteId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         #endregion
 
         #region ClienteVeiculos

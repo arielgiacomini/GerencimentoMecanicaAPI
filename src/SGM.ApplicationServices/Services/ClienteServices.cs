@@ -41,6 +41,11 @@ namespace SGM.ApplicationServices.Services
             _clienteRepository.Salvar(entidade);
         }
 
+        public void InativarCliente(int solicitacaoId)
+        {
+            _clienteRepository.InativarCliente(solicitacaoId);
+        }
+
         public void Atualizar(ClienteViewModel model)
         {
             var cliente = _clienteRepository.GetById(model.ClienteId);

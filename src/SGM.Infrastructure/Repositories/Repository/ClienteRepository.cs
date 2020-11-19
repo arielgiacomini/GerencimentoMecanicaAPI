@@ -53,6 +53,18 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Cliente.Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "")).FirstOrDefault();
         }
 
+        public void InativarCliente(int clienteId)
+        {
+            var cliente = _SGMContext.Cliente.Where(pessoa => pessoa.ClienteId == clienteId).FirstOrDefault();
+
+            cliente.DataAlteracao = DateTime.Now;
+            cliente.ClienteAtivo = false;
+
+            _SGMContext.Update(cliente);
+            _SGMContext.SaveChanges();
+
+        }
+
         public void Atualizar(Cliente entidade)
         {
             var cliente = GetById(entidade.ClienteId);
