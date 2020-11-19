@@ -38,6 +38,7 @@ namespace SGM.ApplicationServices.Services
         public void Salvar(ClienteViewModel model)
         {
             var entidade = _mapper.Map<Cliente>(model);
+            entidade.DataAlteracao = null;
             _clienteRepository.Salvar(entidade);
         }
 
