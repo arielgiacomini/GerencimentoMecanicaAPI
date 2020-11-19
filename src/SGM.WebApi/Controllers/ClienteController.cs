@@ -80,8 +80,22 @@ namespace SGM.WebApi.Controllers
             }
         }
 
-        #endregion
+        [HttpGet]
+        [Route("cliente/documento-cliente")]
+        public IActionResult GetClienteByDocumentoCliente(string documentoCliente)
+        {
+            try
+            {
+                var cliente = _clienteServices.GetClienteByDocumentoCliente(documentoCliente);
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
 
+        #endregion
 
         #region ClienteVeiculos
         /*
@@ -105,7 +119,22 @@ namespace SGM.WebApi.Controllers
             }
         }
         */
-        #endregion
 
+        [HttpGet]
+        [Route("cliente-veiculo/{clienteId}")]
+        public IActionResult GetVeiculoClienteByClienteId(int clienteId)
+        {
+            try
+            {
+                var clientes = _clienteServices.GetClienteVeiculoByClienteId(clienteId);
+                return Ok(clientes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        #endregion
     }
 }

@@ -11,6 +11,8 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         Cliente GetById(int clienteId);
         void Salvar(Cliente model);
         void Atualizar(Cliente entidade);
+        IEnumerable<ClienteVeiculo> GetVeiculosClienteByClienteId(int clienteId);
+        Cliente GetClienteByDocumentoCliente(string documentoCliente);
 
         //IEnumerable<ClienteComplex> GetByAllPaginado(int page);
     }

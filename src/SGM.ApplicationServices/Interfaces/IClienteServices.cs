@@ -11,6 +11,8 @@ namespace SGM.ApplicationServices.Interfaces
         ClienteViewModel GetById(int clienteId);
         void Salvar(ClienteViewModel model);
         void Atualizar(ClienteViewModel model);
+        IEnumerable<ClienteVeiculoViewModel> GetClienteVeiculoByClienteId(int clienteId);
+        ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente);
 
         //IEnumerable<ClienteViewModel> GetByAllPaginado(int page);
     }

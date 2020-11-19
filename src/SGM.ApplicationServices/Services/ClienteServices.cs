@@ -47,8 +47,8 @@ namespace SGM.ApplicationServices.Services
 
             if (cliente == null)
             {
-                _clienteRepository.Salvar(new Cliente() 
-                { 
+                _clienteRepository.Salvar(new Cliente()
+                {
                     NomeCliente = model.NomeCliente,
                     Apelido = model.Apelido,
                     DocumentoCliente = model.DocumentoCliente,
@@ -99,6 +99,16 @@ namespace SGM.ApplicationServices.Services
                     DataAlteracao = DateTime.Now
                 });
             }
+        }
+
+        public IEnumerable<ClienteVeiculoViewModel> GetClienteVeiculoByClienteId(int clienteId)
+        {
+            return _mapper.Map<IEnumerable<ClienteVeiculoViewModel>>(_clienteRepository.GetVeiculosClienteByClienteId(clienteId));
+        }
+
+        public ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente)
+        {
+            return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByDocumentoCliente(documentoCliente));
         }
 
         /*
