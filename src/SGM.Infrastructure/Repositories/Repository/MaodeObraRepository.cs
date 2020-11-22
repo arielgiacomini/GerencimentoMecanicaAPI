@@ -2,6 +2,7 @@
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -42,6 +43,16 @@ namespace SGM.Infrastructure.Repositories.Repository
         public MaodeObra GetById(int maoDeObraId)
         {
             return _SGMContext.MaodeObra.Where(x => x.MaodeObraId == maoDeObraId).FirstOrDefault();
+        }
+
+        public void InativarMaoDeObra(MaodeObra maoDeObra)
+        {
+            maoDeObra.Ativo = false;
+            maoDeObra.VigenciaFinal = DateTime.Now;
+
+            _SGMContext.Update(maoDeObra);
+            _SGMContext.SaveChanges();
+
         }
 
         public void Salvar(MaodeObra entidade)

@@ -10,6 +10,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<MaodeObra> GetByAllPaginado(int page);
         Count GetCount();
         MaodeObra GetById(int orcamentoId);
+        void InativarMaoDeObra(MaodeObra maoDeObra);
         void Salvar(MaodeObra model);
         void Atualizar(MaodeObra model);
     }

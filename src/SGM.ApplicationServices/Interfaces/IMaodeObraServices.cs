@@ -10,6 +10,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<MaodeObraViewModel> GetByAllPaginado(int page);
         Count GetCount();
         MaodeObraViewModel GetById(int orcamentoId);
+        void InativarMaodeObra(int maoDeObraId);
         void AtualizarOrSalvar(MaodeObraViewModel model);
     }
 }
