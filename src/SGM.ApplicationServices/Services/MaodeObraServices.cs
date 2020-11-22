@@ -30,6 +30,23 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<MaodeObraViewModel>>(_maoDeObraRepository.GetByAllPaginado(page));
         }
 
+        public void InativarMaodeObra(int maoDeObraId)
+        {
+            var maoDeObra = _maoDeObraRepository.GetById(maoDeObraId);
+
+            _maoDeObraRepository.InativarMaoDeObra(new MaodeObra()
+            {
+                MaodeObraId = maoDeObra.MaodeObraId,
+                Descricao = maoDeObra.Descricao,
+                Tipo = maoDeObra.Tipo,
+                Valor = maoDeObra.Valor,
+                VigenciaInicial = maoDeObra.VigenciaInicial,
+                VigenciaFinal = DateTime.Now,
+                Ativo = false,
+                DataCadastro = maoDeObra.DataCadastro
+            });
+        }
+
         public MaodeObraViewModel GetById(int maodeObraId)
         {
             return _mapper.Map<MaodeObraViewModel>(_maoDeObraRepository.GetById(maodeObraId));

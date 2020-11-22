@@ -97,5 +97,20 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPut]
+        [Route("mao-de-obra/inativar/{maoDeObraId}")]
+        public IActionResult InativarCliente(int maoDeObraId)
+        {
+            try
+            {
+                _maodeObraServices.InativarMaodeObra(maoDeObraId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }
