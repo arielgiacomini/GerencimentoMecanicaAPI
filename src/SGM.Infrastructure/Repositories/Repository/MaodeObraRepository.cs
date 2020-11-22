@@ -1,8 +1,8 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,18 +19,18 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<MaodeObra> GetByAll()
         {
-            return _SGMContext.MaodeObra.ToList();
+            return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).ToList();
         }
 
         public IEnumerable<MaodeObra> GetByAllPaginado(int page)
         {
 
-            return _SGMContext.MaodeObra.Skip((page - 1) * 5).Take(5).ToList();
+            return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).Skip((page - 1) * 5).Take(5).ToList();
         }
 
         public Count GetCount()
         {
-            var contagem = _SGMContext.MaodeObra.Count();
+            var contagem = _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).AsNoTracking().Count();
 
             Count cont = new Count();
             {
@@ -42,17 +42,13 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public MaodeObra GetById(int maoDeObraId)
         {
-            return _SGMContext.MaodeObra.Where(x => x.MaodeObraId == maoDeObraId).FirstOrDefault();
+            return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.MaodeObraId == maoDeObraId).FirstOrDefault();
         }
 
         public void InativarMaoDeObra(MaodeObra maoDeObra)
         {
-            maoDeObra.Ativo = false;
-            maoDeObra.VigenciaFinal = DateTime.Now;
-
-            _SGMContext.Update(maoDeObra);
+            _SGMContext.MaodeObra.Update(maoDeObra);
             _SGMContext.SaveChanges();
-
         }
 
         public void Salvar(MaodeObra entidade)
@@ -64,6 +60,7 @@ namespace SGM.Infrastructure.Repositories.Repository
         public void Atualizar(MaodeObra entidade)
         {
             var maoDeObra = GetById(entidade.MaodeObraId);
+
             maoDeObra.Descricao = entidade.Descricao;
             maoDeObra.Tipo = entidade.Tipo;
             maoDeObra.Valor = entidade.Valor;
@@ -71,7 +68,7 @@ namespace SGM.Infrastructure.Repositories.Repository
             maoDeObra.VigenciaFinal = entidade.VigenciaFinal;
             maoDeObra.Ativo = entidade.Ativo;
 
-            _SGMContext.Update(maoDeObra);
+            _SGMContext.MaodeObra.Update(maoDeObra);
             _SGMContext.SaveChanges();
         }
     }
