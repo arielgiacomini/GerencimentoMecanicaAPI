@@ -10,8 +10,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<PecaViewModel> GetByAllPaginado(int page);
         Count GetCount();
         PecaViewModel GetById(int pecaId);
+        void InativarPeca(int pecaId);
         void AtualizarOrSalvar(PecaViewModel model);
-
-
     }
 }

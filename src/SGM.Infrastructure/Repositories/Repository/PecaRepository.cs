@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -18,18 +19,17 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<Peca> GetByAll()
         {
-            return _SGMContext.Peca.ToList();
+            return _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).ToList();
         }
 
         public IEnumerable<Peca> GetByAllPaginado(int page)
         {
-
-            return _SGMContext.Peca.Skip((page - 1) * 5).Take(5).ToList();
+            return _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).Skip((page - 1) * 5).Take(5).ToList();
         }
 
         public Count GetCount()
         {
-            var contagem = _SGMContext.Peca.Count();
+            var contagem = _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).Count();
 
             Count cont = new Count();
             {
@@ -41,7 +41,17 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Peca GetById(int pecaId)
         {
-            return _SGMContext.Peca.Where(x => x.PecaId == pecaId).FirstOrDefault();
+            return _SGMContext.Peca.AsNoTracking().Where(x => x.PecaId == pecaId).FirstOrDefault();
+        }
+
+        public void InativarPeca(int pecaId)
+        {
+            var peca = GetById(pecaId);
+
+            peca.Ativo = false;
+
+            _SGMContext.Peca.Update(peca);
+            _SGMContext.SaveChanges();
         }
 
         public void Salvar(Peca entidade)
@@ -53,15 +63,15 @@ namespace SGM.Infrastructure.Repositories.Repository
         public void Atualizar(Peca entidade)
         {
             var peca = GetById(entidade.PecaId);
+
             peca.Descricao = entidade.Descricao;
             peca.Fornecedor = entidade.Fornecedor;
             peca.Valor = entidade.Valor;
             peca.ValorFrete = entidade.ValorFrete;
             peca.Ativo = entidade.Ativo;
 
-            _SGMContext.Update(peca);
+            _SGMContext.Peca.Update(peca);
             _SGMContext.SaveChanges();
         }
     }
-
 }

@@ -40,7 +40,7 @@ namespace SGM.ApplicationServices.Services
         {
             var servico = _servicoRepository.GetById(model.ServicoId);
 
-            if(servico == null)
+            if (servico == null)
             {
                 _servicoRepository.Salvar(new Servico()
                 {
