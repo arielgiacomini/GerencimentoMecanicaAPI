@@ -11,5 +11,6 @@ namespace SGM.ApplicationServices.Interfaces
         VeiculoViewModel GetById(int veiculoId);
         void InativarVeiculo(int veiculoId);
         void AtualizarOrSalvar(VeiculoViewModel model);
+        VeiculoMarcaViewModel GetMarcaByMarcaId(int marcaId);
     }
 }
