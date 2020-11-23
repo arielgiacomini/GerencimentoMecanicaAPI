@@ -12,11 +12,13 @@ namespace SGM.ApplicationServices.Services
     public class VeiculoServices : IVeiculoServices
     {
         private readonly IVeiculoRepository _veiculoRepository;
+        private readonly IVeiculoMarcaRepository _veiculoMarcaRepository;
         private readonly IMapper _mapper;
 
-        public VeiculoServices(IVeiculoRepository veiculoRepository, IMapper mapper)
+        public VeiculoServices(IVeiculoRepository veiculoRepository, IVeiculoMarcaRepository veiculoMarcaRepository, IMapper mapper)
         {
             _veiculoRepository = veiculoRepository;
+            _veiculoMarcaRepository = veiculoMarcaRepository;
             _mapper = mapper;
         }
 
@@ -65,6 +67,11 @@ namespace SGM.ApplicationServices.Services
                     VeiculoAtivo = model.VeiculoAtivo
                 });
             }
+        }
+
+        public VeiculoMarcaViewModel GetMarcaByMarcaId(int marcaId)
+        {
+            return _mapper.Map<VeiculoMarcaViewModel>(_veiculoMarcaRepository.GetById(marcaId));
         }
     }
 }

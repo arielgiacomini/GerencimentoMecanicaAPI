@@ -92,5 +92,20 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpGet]
+        [Route("marca/{marcaId}")]
+        public IActionResult GetMarcaId(int marcaId)
+        {
+            try
+            {
+                var marca = _veiculoServices.GetMarcaByMarcaId(marcaId);
+                return Ok(marca);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }

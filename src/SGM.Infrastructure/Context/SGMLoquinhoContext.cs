@@ -22,6 +22,7 @@ namespace SGM.Infrastructure.Context
         public DbSet<Veiculo> Veiculo { get; set; }
         public DbSet<ClienteVeiculo> ClienteVeiculo { get; set; }
         public DbSet<Servico> Servico { get; set; }
+        public DbSet<VeiculoMarca> VeiculoMarca { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,7 @@ namespace SGM.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new VeiculoMapping());
             modelBuilder.ApplyConfiguration(new ClienteVeiculoMapping());
             modelBuilder.ApplyConfiguration(new ServicoMapping());
+            modelBuilder.ApplyConfiguration(new VeiculoMarcaMapping());
             base.OnModelCreating(modelBuilder);
         }
 
