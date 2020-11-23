@@ -1,6 +1,5 @@
 ﻿using SGM.Domain.Entities;
 using SGM.Domain.Utils;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace SGM.Infrastructure.Repositories.Interfaces

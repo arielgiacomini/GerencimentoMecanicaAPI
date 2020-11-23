@@ -39,6 +39,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<PecaViewModel>(_PecaRepository.GetById(PecaId));
         }
 
+        public void InativarPeca(int pecaId)
+        {
+            _PecaRepository.InativarPeca(pecaId);
+        }
+
         public void AtualizarOrSalvar(PecaViewModel model)
         {
             var Peca = _PecaRepository.GetById(model.PecaId);

@@ -26,9 +26,9 @@ namespace SGM.WebApi.Controllers
                 var servico = _servicoServices.GetByAll();
                 return Ok(servico);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return StatusCode(500,ex);
+                return StatusCode(500, ex);
             }
         }
 
@@ -43,7 +43,7 @@ namespace SGM.WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500,ex);
+                return StatusCode(500, ex);
             }
         }
 

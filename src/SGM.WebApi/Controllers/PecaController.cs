@@ -98,5 +98,20 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPut]
+        [Route("peca/inativar/{pecaId}")]
+        public IActionResult InativarPeca(int pecaId)
+        {
+            try
+            {
+                _pecaServices.InativarPeca(pecaId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }

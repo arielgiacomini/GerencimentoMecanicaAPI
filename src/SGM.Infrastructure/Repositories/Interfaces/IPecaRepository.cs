@@ -10,6 +10,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<Peca> GetByAllPaginado(int page);
         Count GetCount();
         Peca GetById(int pecaId);
+        void InativarPeca(int pecaId);
         void Salvar(Peca model);
         void Atualizar(Peca model);
     }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SGM.Infrastructure.Repositories.Repository
 {
-    public class ServicoRepository: IServicoRepository
+    public class ServicoRepository : IServicoRepository
     {
         private readonly SGMContext _SGMContext;
 
