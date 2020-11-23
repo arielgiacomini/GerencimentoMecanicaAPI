@@ -9,6 +9,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<VeiculoViewModel> GetByAll();
         Count GetCount();
         VeiculoViewModel GetById(int veiculoId);
+        void InativarVeiculo(int veiculoId);
         void AtualizarOrSalvar(VeiculoViewModel model);
     }
 }

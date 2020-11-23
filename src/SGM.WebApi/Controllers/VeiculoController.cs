@@ -77,5 +77,20 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpPut]
+        [Route("veiculo/inativar/{veiculoId}")]
+        public IActionResult InativarVeiculo(int veiculoId)
+        {
+            try
+            {
+                _veiculoServices.InativarVeiculo(veiculoId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }
