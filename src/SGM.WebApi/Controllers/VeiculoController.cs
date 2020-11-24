@@ -107,5 +107,20 @@ namespace SGM.WebApi.Controllers
                 return StatusCode(500, ex);
             }
         }
+
+        [HttpGet]
+        [Route("marcas")]
+        public IActionResult GetMarcasByAll()
+        {
+            try
+            {
+                var marcas = _veiculoServices.GetMarcasByAll();
+                return Ok(marcas);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }
