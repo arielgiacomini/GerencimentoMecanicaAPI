@@ -104,6 +104,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.PlacaVeiculo.Replace("-", "") == placa.Replace("-", "")).FirstOrDefault();
         }
 
+        public ClienteVeiculo GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.ClienteVeiculoId == clienteVeiculoId).FirstOrDefault();
+        }
+
         /*
          * COMENTADO, POIS PARA FUNCIONAR É PRECISO
          * 

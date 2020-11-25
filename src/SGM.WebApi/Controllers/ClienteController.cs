@@ -144,6 +144,21 @@ namespace SGM.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("cliente-veiculo/id/{clienteVeiculoId}")]
+        public IActionResult GetClienteVeiculoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            try
+            {
+                var clienteVeiculo = _clienteServices.GetVeiculoClienteByClienteVeiculoId(clienteVeiculoId);
+                return Ok(clienteVeiculo);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         /*
         [HttpGet]
         [Route("cliente/veiculo/paginado/{page}")]

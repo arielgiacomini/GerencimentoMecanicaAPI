@@ -15,6 +15,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         ClienteVeiculo GetVeiculoClienteByPlaca(string placa);
         Cliente GetClienteByDocumentoCliente(string documentoCliente);
         void InativarCliente(int clienteId);
+        ClienteVeiculo GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId);
 
         //IEnumerable<ClienteComplex> GetByAllPaginado(int page);
     }
