@@ -9,7 +9,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<ClienteViewModel> GetByAll();
         Count GetCount();
         ClienteViewModel GetById(int clienteId);
-        void Salvar(ClienteViewModel model);
+        int Salvar(ClienteViewModel model);
         void Atualizar(ClienteViewModel model);
         ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente);
         void InativarCliente(int solicitacaoId);

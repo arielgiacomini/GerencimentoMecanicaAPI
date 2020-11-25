@@ -55,8 +55,8 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                _clienteServices.Salvar(model);
-                return Ok();
+                var clienteId = _clienteServices.Salvar(model);
+                return Created("", clienteId);
             }
             catch (Exception ex)
             {

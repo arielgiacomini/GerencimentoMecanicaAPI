@@ -49,10 +49,12 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
-        public void Salvar(Veiculo entidade)
+        public int Salvar(Veiculo entidade)
         {
             _SGMContext.Veiculo.Add(entidade);
             _SGMContext.SaveChanges();
+
+            return entidade.VeiculoId;
         }
 
         public void Atualizar(Veiculo entidade)

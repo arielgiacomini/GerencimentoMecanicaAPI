@@ -10,7 +10,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         Count GetCount();
         Veiculo GetById(int orcamentoId);
         void InativarVeiculo(int veiculoId);
-        void Salvar(Veiculo model);
+        int Salvar(Veiculo entidade);
         void Atualizar(Veiculo model);
     }
 }

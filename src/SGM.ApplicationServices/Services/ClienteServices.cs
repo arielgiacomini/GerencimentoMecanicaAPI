@@ -35,11 +35,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<Count>(_clienteRepository.GetCount());
         }
 
-        public void Salvar(ClienteViewModel model)
+        public int Salvar(ClienteViewModel model)
         {
             var entidade = _mapper.Map<Cliente>(model);
             entidade.DataAlteracao = null;
-            _clienteRepository.Salvar(entidade);
+            return _clienteRepository.Salvar(entidade);
         }
 
         public void InativarCliente(int solicitacaoId)
