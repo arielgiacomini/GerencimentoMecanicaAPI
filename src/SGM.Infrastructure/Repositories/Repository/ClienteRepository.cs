@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SGM.Domain.Entities;
+﻿using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -40,13 +39,15 @@ namespace SGM.Infrastructure.Repositories.Repository
             return cont;
         }
 
-        public void Salvar(Cliente entidade)
+        public int Salvar(Cliente entidade)
         {
             entidade.DataCadastro = DateTime.Now;
             entidade.ClienteAtivo = true;
 
             _SGMContext.Cliente.Add(entidade);
             _SGMContext.SaveChanges();
+
+            return entidade.ClienteId;
         }
 
         public Cliente GetClienteByDocumentoCliente(string documentoCliente)

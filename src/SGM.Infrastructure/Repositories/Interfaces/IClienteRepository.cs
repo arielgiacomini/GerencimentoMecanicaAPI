@@ -9,7 +9,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<Cliente> GetByAll();
         Count GetCount();
         Cliente GetById(int clienteId);
-        void Salvar(Cliente model);
+        int Salvar(Cliente entidade);
         void Atualizar(Cliente entidade);
         Cliente GetClienteByDocumentoCliente(string documentoCliente);
         void InativarCliente(int clienteId);

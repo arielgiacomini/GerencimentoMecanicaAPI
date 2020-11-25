@@ -42,13 +42,13 @@ namespace SGM.ApplicationServices.Services
             _veiculoRepository.InativarVeiculo(veiculoId);
         }
 
-        public void AtualizarOrSalvar(VeiculoViewModel model)
+        public int AtualizarOrSalvar(VeiculoViewModel model)
         {
-            var orcamento = _veiculoRepository.GetById(model.VeiculoId);
+            var veiculo = _veiculoRepository.GetById(model.VeiculoId);
 
-            if (orcamento == null)
+            if (veiculo == null)
             {
-                _veiculoRepository.Salvar(new Veiculo()
+                return _veiculoRepository.Salvar(new Veiculo()
                 {
                     VeiculoId = model.VeiculoId,
                     MarcaId = model.MarcaId,
@@ -66,6 +66,8 @@ namespace SGM.ApplicationServices.Services
                     Modelo = model.Modelo,
                     VeiculoAtivo = model.VeiculoAtivo
                 });
+
+                return 0;
             }
         }
 
