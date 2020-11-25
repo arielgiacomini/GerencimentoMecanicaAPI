@@ -107,24 +107,9 @@ namespace SGM.ApplicationServices.Services
             }
         }
 
-        public IEnumerable<ClienteVeiculoViewModel> GetClienteVeiculoByClienteId(int clienteId)
-        {
-            return _mapper.Map<IEnumerable<ClienteVeiculoViewModel>>(_clienteRepository.GetVeiculosClienteByClienteId(clienteId));
-        }
-
         public ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente)
         {
             return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByDocumentoCliente(documentoCliente));
-        }
-
-        public ClienteVeiculoViewModel GetVeiculoClienteByPlaca(string placa)
-        {
-            return _mapper.Map<ClienteVeiculoViewModel>(_clienteRepository.GetVeiculoClienteByPlaca(placa));
-        }
-
-        public ClienteVeiculoViewModel GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId)
-        {
-            return _mapper.Map<ClienteVeiculoViewModel>(_clienteRepository.GetVeiculoClienteByClienteVeiculoId(clienteVeiculoId));
         }
 
         /*
