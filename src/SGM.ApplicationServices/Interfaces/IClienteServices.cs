@@ -15,6 +15,7 @@ namespace SGM.ApplicationServices.Interfaces
         ClienteVeiculoViewModel GetVeiculoClienteByPlaca(string placa);
         ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente);
         void InativarCliente(int solicitacaoId);
+        ClienteVeiculoViewModel GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId);
 
         //IEnumerable<ClienteViewModel> GetByAllPaginado(int page);
     }
