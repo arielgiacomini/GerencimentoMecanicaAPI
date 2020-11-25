@@ -2,6 +2,7 @@
 using SGM.Domain.Entities;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,12 +19,12 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<ClienteVeiculo> GetVeiculosClienteByClienteId(int clienteId)
         {
-            return _SGMContext.ClienteVeiculo.Where(veiculosCliente => veiculosCliente.ClienteId == clienteId).ToList();
+            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(veiculosCliente => veiculosCliente.ClienteId == clienteId && veiculosCliente.Ativo).ToList();
         }
 
         public ClienteVeiculo GetVeiculoClienteByPlaca(string placa)
         {
-            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.PlacaVeiculo.Replace("-", "") == placa.Replace("-", "")).FirstOrDefault();
+            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.PlacaVeiculo.Replace("-", "") == placa.Replace("-", "") && clienteVeiculo.Ativo).FirstOrDefault();
         }
 
         public ClienteVeiculo GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId)
@@ -45,6 +46,17 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
 
             return clienteVeiculo.ClienteVeiculoId;
+        }
+
+        public void InativarClienteVeiculo(int clienteVeiculoId)
+        {
+            var clienteVeiculo = GetVeiculoClienteByClienteVeiculoId(clienteVeiculoId);
+
+            clienteVeiculo.DataAlteracao = DateTime.Now;
+            clienteVeiculo.Ativo = false;
+
+            _SGMContext.ClienteVeiculo.Update(clienteVeiculo);
+            _SGMContext.SaveChanges();
         }
     }
 }

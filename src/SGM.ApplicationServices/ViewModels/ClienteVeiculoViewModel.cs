@@ -1,4 +1,6 @@
-﻿namespace SGM.ApplicationServices.ViewModels
+﻿using System;
+
+namespace SGM.ApplicationServices.ViewModels
 {
     public class ClienteVeiculoViewModel
     {
@@ -9,5 +11,8 @@
         public string PlacaVeiculo { get; set; }
         public string CorVeiculo { get; set; }
         public int KmRodados { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public bool Ativo { get; set; }
+        public DateTime? DataAlteracao { get; set; }
     }
 }

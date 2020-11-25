@@ -1,4 +1,6 @@
-﻿namespace SGM.Domain.Entities
+﻿using System;
+
+namespace SGM.Domain.Entities
 {
     public class ClienteVeiculo
     {
@@ -9,5 +11,8 @@
         public string CorVeiculo { get; set; }
         public int KmRodados { get; set; }
         public int AnoVeiculo { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public bool Ativo { get; set; }
+        public DateTime? DataAlteracao { get; set; }
     }
 }

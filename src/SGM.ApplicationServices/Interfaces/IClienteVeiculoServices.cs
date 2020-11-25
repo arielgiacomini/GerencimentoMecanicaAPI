@@ -10,5 +10,6 @@ namespace SGM.ApplicationServices.Interfaces
         ClienteVeiculoViewModel GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId);
         int SalvarClienteVeiculo(ClienteVeiculoViewModel clienteVeiculoViewModel);
         int AtualizarClienteVeiculo(ClienteVeiculoViewModel clienteVeiculoViewModel);
+        void InativarClienteVeiculo(int clienteVeiculoId);
     }
 }
