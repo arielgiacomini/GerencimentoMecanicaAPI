@@ -9,6 +9,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<Veiculo> GetByAll();
         Count GetCount();
         Veiculo GetById(int orcamentoId);
+        IList<Veiculo> GetVeiculoByMarcaId(int marcaId);
         void InativarVeiculo(int veiculoId);
         int Salvar(Veiculo entidade);
         void Atualizar(Veiculo model);
