@@ -37,6 +37,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<VeiculoViewModel>(_veiculoRepository.GetById(orcamentoId));
         }
 
+        public IList<VeiculoViewModel> GetVeiculosByMarcaId(int marcaId)
+        {
+            return _mapper.Map<IList<VeiculoViewModel>>(_veiculoRepository.GetVeiculoByMarcaId(marcaId));
+        }
+
         public void InativarVeiculo(int veiculoId)
         {
             _veiculoRepository.InativarVeiculo(veiculoId);
