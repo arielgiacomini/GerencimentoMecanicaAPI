@@ -94,21 +94,6 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
         }
 
-        public IEnumerable<ClienteVeiculo> GetVeiculosClienteByClienteId(int clienteId)
-        {
-            return _SGMContext.ClienteVeiculo.Where(veiculosCliente => veiculosCliente.ClienteId == clienteId).ToList();
-        }
-
-        public ClienteVeiculo GetVeiculoClienteByPlaca(string placa)
-        {
-            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.PlacaVeiculo.Replace("-", "") == placa.Replace("-", "")).FirstOrDefault();
-        }
-
-        public ClienteVeiculo GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId)
-        {
-            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.ClienteVeiculoId == clienteVeiculoId).FirstOrDefault();
-        }
-
         /*
          * COMENTADO, POIS PARA FUNCIONAR É PRECISO
          * 
