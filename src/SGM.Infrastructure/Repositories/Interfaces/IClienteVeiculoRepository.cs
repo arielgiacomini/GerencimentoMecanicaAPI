@@ -10,6 +10,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         ClienteVeiculo GetVeiculoClienteByClienteVeiculoId(int clienteVeiculoId);
         int SalvarClienteVeiculo(ClienteVeiculo clienteVeiculo);
         int AtualizarClienteVeiculo(ClienteVeiculo clienteVeiculo);
+        void InativarClienteVeiculo(int clienteVeiculoId);
 
     }
 }

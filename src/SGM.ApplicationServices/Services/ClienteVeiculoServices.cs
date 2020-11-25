@@ -3,6 +3,7 @@ using SGM.ApplicationServices.Interfaces;
 using SGM.ApplicationServices.ViewModels;
 using SGM.Domain.Entities;
 using SGM.Infrastructure.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace SGM.ApplicationServices.Services
@@ -35,12 +36,30 @@ namespace SGM.ApplicationServices.Services
 
         public int SalvarClienteVeiculo(ClienteVeiculoViewModel clienteVeiculoViewModel)
         {
+            clienteVeiculoViewModel.DataCadastro = DateTime.Now;
+            clienteVeiculoViewModel.Ativo = true;
+            clienteVeiculoViewModel.DataAlteracao = null;
+
             return _clienteVeiculoRepository.SalvarClienteVeiculo(_mapper.Map<ClienteVeiculo>(clienteVeiculoViewModel));
         }
 
         public int AtualizarClienteVeiculo(ClienteVeiculoViewModel clienteVeiculoViewModel)
         {
-            return _clienteVeiculoRepository.AtualizarClienteVeiculo(_mapper.Map<ClienteVeiculo>(clienteVeiculoViewModel));
+            var clienteVeiculo = GetVeiculoClienteByClienteVeiculoId(clienteVeiculoViewModel.ClienteVeiculoId);
+
+            clienteVeiculo.DataAlteracao = DateTime.Now;
+            clienteVeiculo.CorVeiculo = clienteVeiculoViewModel.CorVeiculo;
+            clienteVeiculo.Ativo = clienteVeiculoViewModel.Ativo;
+            clienteVeiculo.VeiculoId = clienteVeiculoViewModel.VeiculoId;
+            clienteVeiculo.PlacaVeiculo = clienteVeiculoViewModel.PlacaVeiculo;
+            clienteVeiculo.KmRodados = clienteVeiculoViewModel.KmRodados;
+
+            return _clienteVeiculoRepository.AtualizarClienteVeiculo(_mapper.Map<ClienteVeiculo>(clienteVeiculo));
+        }
+
+        public void InativarClienteVeiculo(int clienteVeiculoId)
+        {
+            _clienteVeiculoRepository.InativarClienteVeiculo(clienteVeiculoId);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -19,17 +20,17 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<Cliente> GetByAll()
         {
-            return _SGMContext.Cliente.ToList();
+            return _SGMContext.Cliente.AsNoTracking().Where(cliente => cliente.ClienteAtivo).ToList();
         }
 
         public Cliente GetById(int clienteId)
         {
-            return _SGMContext.Cliente.Where(x => x.ClienteId == clienteId).FirstOrDefault();
+            return _SGMContext.Cliente.AsNoTracking().Where(x => x.ClienteId == clienteId).FirstOrDefault();
         }
 
         public Count GetCount()
         {
-            var contagem = _SGMContext.Cliente.Count();
+            var contagem = GetByAll().Count();
 
             Count cont = new Count();
             {
@@ -52,12 +53,12 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Cliente GetClienteByDocumentoCliente(string documentoCliente)
         {
-            return _SGMContext.Cliente.Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "")).FirstOrDefault();
+            return _SGMContext.Cliente.AsNoTracking().Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "") && cliente.ClienteAtivo).FirstOrDefault();
         }
 
         public void InativarCliente(int clienteId)
         {
-            var cliente = _SGMContext.Cliente.Where(pessoa => pessoa.ClienteId == clienteId).FirstOrDefault();
+            var cliente = GetById(clienteId);
 
             cliente.DataAlteracao = DateTime.Now;
             cliente.ClienteAtivo = false;
