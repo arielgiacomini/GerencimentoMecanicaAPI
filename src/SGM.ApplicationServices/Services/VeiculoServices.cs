@@ -73,5 +73,10 @@ namespace SGM.ApplicationServices.Services
         {
             return _mapper.Map<VeiculoMarcaViewModel>(_veiculoMarcaRepository.GetById(marcaId));
         }
+
+        public IList<VeiculoMarcaViewModel> GetMarcasByAll()
+        {
+            return _mapper.Map<IList<VeiculoMarcaViewModel>>(_veiculoMarcaRepository.GetMarcasByAll());
+        }
     }
 }

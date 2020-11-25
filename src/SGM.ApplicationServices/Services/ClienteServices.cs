@@ -117,6 +117,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByDocumentoCliente(documentoCliente));
         }
 
+        public ClienteVeiculoViewModel GetVeiculoClienteByPlaca(string placa)
+        {
+            return _mapper.Map<ClienteVeiculoViewModel>(_clienteRepository.GetVeiculoClienteByPlaca(placa));
+        }
+
         /*
          * COMENTADO, POIS PARA FUNCIONAR É PRECISO
          * 

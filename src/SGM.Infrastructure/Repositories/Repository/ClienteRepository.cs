@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -96,6 +97,11 @@ namespace SGM.Infrastructure.Repositories.Repository
         public IEnumerable<ClienteVeiculo> GetVeiculosClienteByClienteId(int clienteId)
         {
             return _SGMContext.ClienteVeiculo.Where(veiculosCliente => veiculosCliente.ClienteId == clienteId).ToList();
+        }
+
+        public ClienteVeiculo GetVeiculoClienteByPlaca(string placa)
+        {
+            return _SGMContext.ClienteVeiculo.AsNoTracking().Where(clienteVeiculo => clienteVeiculo.PlacaVeiculo.Replace("-", "") == placa.Replace("-", "")).FirstOrDefault();
         }
 
         /*
