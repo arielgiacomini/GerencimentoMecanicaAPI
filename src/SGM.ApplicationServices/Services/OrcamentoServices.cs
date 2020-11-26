@@ -36,13 +36,13 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetOrcamentoById(orcamentoId));
         }
 
-        public void AtualizarOrSalvar(OrcamentoViewModel model)
+        public int AtualizarOrSalvar(OrcamentoViewModel model)
         {
             var orcamento = _orcamentoRepository.GetOrcamentoById(model.OrcamentoId);
 
             if (orcamento == null)
             {
-                _orcamentoRepository.SalvarOrcamento(new Orcamento()
+                return _orcamentoRepository.SalvarOrcamento(new Orcamento()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     Descricao = model.Descricao,
@@ -68,17 +68,19 @@ namespace SGM.ApplicationServices.Services
                     Status = model.Status,
                     Ativo = model.Ativo
                 });
+
+                return 0;
             }
         }
 
-        public void SalvarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel)
+        public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel)
         {
-            _orcamentoRepository.SalvarOrcamentoMaodeObra(_mapper.Map<OrcamentoMaodeObra>(orcamentoMaodeObraViewModel));
+            return _orcamentoRepository.SalvarOrcamentoMaodeObra(_mapper.Map<OrcamentoMaodeObra>(orcamentoMaodeObraViewModel));
         }
 
-        public void SalvarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel)
+        public int SalvarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel)
         {
-            _orcamentoRepository.SalvarOrcamentoPeca(_mapper.Map<OrcamentoPeca>(orcamentoPecaViewModel));
+            return _orcamentoRepository.SalvarOrcamentoPeca(_mapper.Map<OrcamentoPeca>(orcamentoPecaViewModel));
         }
 
         public void DeletarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel)

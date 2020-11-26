@@ -39,10 +39,12 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Orcamento.Where(x => x.OrcamentoId == orcamentoId).FirstOrDefault();
         }
 
-        public void SalvarOrcamento(Orcamento entidade)
+        public int SalvarOrcamento(Orcamento orcamento)
         {
-            _SGMContext.Orcamento.Add(entidade);
+            _SGMContext.Orcamento.Add(orcamento);
             _SGMContext.SaveChanges();
+
+            return orcamento.OrcamentoId;
         }
 
         public void AtualizarOrcamento(Orcamento entidade)
@@ -64,16 +66,20 @@ namespace SGM.Infrastructure.Repositories.Repository
 
 
 
-        public void SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
+        public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
         {
             _SGMContext.OrcamentoMaodeObra.Add(orcamentoMaodeObra);
             _SGMContext.SaveChanges();
+
+            return orcamentoMaodeObra.Id;
         }
 
-        public void SalvarOrcamentoPeca(OrcamentoPeca orcamentoPeca)
+        public int SalvarOrcamentoPeca(OrcamentoPeca orcamentoPeca)
         {
             _SGMContext.OrcamentoPeca.Add(orcamentoPeca);
             _SGMContext.SaveChanges();
+
+            return orcamentoPeca.Id;
         }
 
         public void DeletarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)

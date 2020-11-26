@@ -53,8 +53,14 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                _orcamentoServices.AtualizarOrSalvar(model);
-                return Created("", "");
+                var Id = _orcamentoServices.AtualizarOrSalvar(model);
+
+                if (Id == 0)
+                {
+                    return Ok();
+                }
+
+                return Created("", Id);
             }
             catch (Exception ex)
             {
@@ -84,8 +90,8 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                _orcamentoServices.SalvarOrcamentoMaodeObra(model);
-                return Created("", "");
+                var Id = _orcamentoServices.SalvarOrcamentoMaodeObra(model);
+                return Created("", Id);
             }
             catch (Exception ex)
             {
@@ -99,8 +105,8 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                _orcamentoServices.SalvarOrcamentoPeca(model);
-                return Created("", "");
+                var Id = _orcamentoServices.SalvarOrcamentoPeca(model);
+                return Created("", Id);
             }
             catch (Exception ex)
             {

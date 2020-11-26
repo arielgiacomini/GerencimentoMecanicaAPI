@@ -9,10 +9,10 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<Orcamento> GetOrcamentoByAll();
         Count GetOrcamentoCount();
         Orcamento GetOrcamentoById(int orcamentoId);
-        void SalvarOrcamento(Orcamento model);
+        int SalvarOrcamento(Orcamento model);
         void AtualizarOrcamento(Orcamento model);
-        void SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra);
-        void SalvarOrcamentoPeca(OrcamentoPeca orcamentoPeca);
+        int SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra);
+        int SalvarOrcamentoPeca(OrcamentoPeca orcamentoPeca);
         void DeletarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra);
         void DeletarOrcamentoPeca(OrcamentoPeca orcamentoPeca);
         IList<OrcamentoMaodeObra> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId);
