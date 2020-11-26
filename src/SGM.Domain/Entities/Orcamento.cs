@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SGM.Domain.Entities
 {
@@ -18,5 +19,7 @@ namespace SGM.Domain.Entities
         public bool Ativo { get; set; }
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public virtual IList<OrcamentoMaodeObra> OrcamentoMaodeObra { get; set; }
+        public virtual IList<OrcamentoPeca> OrcamentoPeca { get; set; }
     }
 }

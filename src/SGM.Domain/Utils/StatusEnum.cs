@@ -4,8 +4,8 @@ namespace SGM.Domain.Enuns
 {
     public enum StatusEnum : byte
     {
-        [Description("Gerado")]
-        Gerado = 1,
+        [Description("Iniciado - Pendente de Término")]
+        IniciadoPendente = 1,
         [Description("Expirado")]
         Expirado = 2,
         [Description("Desistido pelo Cliente")]

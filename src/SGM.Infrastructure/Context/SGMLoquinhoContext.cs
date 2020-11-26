@@ -23,18 +23,27 @@ namespace SGM.Infrastructure.Context
         public DbSet<ClienteVeiculo> ClienteVeiculo { get; set; }
         public DbSet<Servico> Servico { get; set; }
         public DbSet<VeiculoMarca> VeiculoMarca { get; set; }
+        public DbSet<OrcamentoMaodeObra> OrcamentoMaodeObra { get; set; }
+        public DbSet<OrcamentoPeca> OrcamentoPeca { get; set; }
+        public DbSet<ServicoMaodeObra> ServicoMaodeObra { get; set; }
+        public DbSet<ServicoPeca> ServicoPeca { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ClienteMapping());
             modelBuilder.ApplyConfiguration(new ColaboradorMapping());
-            modelBuilder.ApplyConfiguration(new OrcamentoMapping());
             modelBuilder.ApplyConfiguration(new PecaMapping());
             modelBuilder.ApplyConfiguration(new MaodeObraMapping());
             modelBuilder.ApplyConfiguration(new VeiculoMapping());
             modelBuilder.ApplyConfiguration(new ClienteVeiculoMapping());
-            modelBuilder.ApplyConfiguration(new ServicoMapping());
             modelBuilder.ApplyConfiguration(new VeiculoMarcaMapping());
+            modelBuilder.ApplyConfiguration(new OrcamentoMapping());
+            modelBuilder.ApplyConfiguration(new OrcamentoMaodeObraMapping());
+            modelBuilder.ApplyConfiguration(new OrcamentoPecaMapping());
+            modelBuilder.ApplyConfiguration(new ServicoMapping());
+            modelBuilder.ApplyConfiguration(new ServicoMaodeObraMapping());
+            modelBuilder.ApplyConfiguration(new ServicoPecaMapping());
+
             base.OnModelCreating(modelBuilder);
         }
 

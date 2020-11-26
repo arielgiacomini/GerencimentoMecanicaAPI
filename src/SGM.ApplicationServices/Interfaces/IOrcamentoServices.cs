@@ -6,9 +6,15 @@ namespace SGM.ApplicationServices.Interfaces
 {
     public interface IOrcamentoServices
     {
-        IEnumerable<OrcamentoViewModel> GetByAll();
-        Count GetCount();
-        OrcamentoViewModel GetById(int orcamentoId);
+        IEnumerable<OrcamentoViewModel> GetOrcamentoByAll();
+        Count GetOrcamentoCount();
+        OrcamentoViewModel GetOrcamentoById(int orcamentoId);
         void AtualizarOrSalvar(OrcamentoViewModel model);
+        void SalvarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel);
+        void SalvarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel);
+        void DeletarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel);
+        void DeletarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel);
+        IList<OrcamentoMaodeObraViewModel> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId);
+        IList<OrcamentoPecaViewModel> GetOrcamentoPecaByOrcamentoId(int orcamentoId);
     }
 }

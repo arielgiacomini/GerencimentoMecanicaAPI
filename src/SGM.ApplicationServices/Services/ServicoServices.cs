@@ -50,7 +50,7 @@ namespace SGM.ApplicationServices.Services
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
-                    Status = (int)StatusEnum.Gerado,
+                    Status = (int)StatusEnum.IniciadoPendente,
                     Ativo = true,
                     DataCadastro = DateTime.Now
                 });
