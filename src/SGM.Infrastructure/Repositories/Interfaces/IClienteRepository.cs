@@ -12,7 +12,9 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         int Salvar(Cliente entidade);
         void Atualizar(Cliente entidade);
         Cliente GetClienteByDocumentoCliente(string documentoCliente);
+        Cliente GetClienteByPlacaVeiculo(string placaVeiculo);
         void InativarCliente(int clienteId);
+        Cliente GetClienteByLikePlacaOrNomeOrApelido(string valor);
 
         //IEnumerable<ClienteComplex> GetByAllPaginado(int page);
     }

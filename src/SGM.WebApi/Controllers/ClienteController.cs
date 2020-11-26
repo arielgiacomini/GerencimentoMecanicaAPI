@@ -17,8 +17,6 @@ namespace SGM.WebApi.Controllers
             _clienteServices = clienteServices;
         }
 
-        #region Cliente
-
         [HttpGet]
         [Route("cliente")]
         public IActionResult GetClientesForAll()
@@ -110,6 +108,34 @@ namespace SGM.WebApi.Controllers
             }
         }
 
-        #endregion
+        [HttpGet]
+        [Route("cliente/placa-veiculo")]
+        public IActionResult GetClienteByPlaca(string placaVeiculo)
+        {
+            try
+            {
+                var cliente = _clienteServices.GetClienteByPlacaVeiculo(placaVeiculo);
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("cliente/placa-or-nome-or-apelido")]
+        public IActionResult GetClienteByLikePlacaOrNomeOrApelido(string valor)
+        {
+            try
+            {
+                var cliente = _clienteServices.GetClienteByLikePlacaOrNomeOrApelido(valor);
+                return Ok(cliente);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
     }
 }
