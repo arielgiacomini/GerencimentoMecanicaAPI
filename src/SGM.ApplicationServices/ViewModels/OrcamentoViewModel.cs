@@ -5,7 +5,6 @@ namespace SGM.ApplicationServices.ViewModels
     public class OrcamentoViewModel
     {
         public int OrcamentoId { get; set; }
-        public int ClienteId { get; set; }
         public int ClienteVeiculoId { get; set; }
         public string Descricao { get; set; }
         public decimal ValorAdicional { get; set; }
