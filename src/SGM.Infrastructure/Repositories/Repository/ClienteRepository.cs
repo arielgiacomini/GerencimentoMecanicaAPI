@@ -63,7 +63,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Cliente GetClienteByLikePlacaOrNomeOrApelido(string valor)
         {
-            var dados = _SGMContext
+            var cliente = _SGMContext
                         .Cliente
                         .AsNoTracking()
                         .Join(_SGMContext.ClienteVeiculo,
@@ -75,10 +75,28 @@ namespace SGM.Infrastructure.Repositories.Repository
                                   || (cl.Cliente.Apelido.Contains(valor))
                                             && cl.Cliente.ClienteAtivo
                                             && cl.ClienteVeiculo.Ativo))
-                        .Select(cliente => cliente.Cliente)
+                        .Select(x => x.Cliente)
                         .FirstOrDefault();
 
-            return dados;
+            var clienteVeiculo = _SGMContext
+                        .Cliente
+                        .AsNoTracking()
+                        .Join(_SGMContext.ClienteVeiculo,
+                              CL => CL.ClienteId,
+                              CLV => CLV.ClienteId,
+                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
+                                  || (cl.Cliente.NomeCliente.Contains(valor))
+                                  || (cl.Cliente.Apelido.Contains(valor))
+                                            && cl.Cliente.ClienteAtivo
+                                            && cl.ClienteVeiculo.Ativo))
+                        .Select(x => x.ClienteVeiculo)
+                        .ToList();
+
+            var final = cliente;
+            final.ClienteVeiculo = clienteVeiculo;
+
+            return final;
         }
 
         public int Salvar(Cliente entidade)
