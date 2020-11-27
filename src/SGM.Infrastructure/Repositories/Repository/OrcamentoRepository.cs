@@ -49,26 +49,9 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public void AtualizarOrcamento(Orcamento orcamentoModel)
         {
-            var orcamento = GetOrcamentoById(orcamentoModel.OrcamentoId);
-
-            orcamento.ClienteVeiculoId = orcamentoModel.ClienteVeiculoId;
-            orcamento.ColaboradorId = orcamentoModel.ColaboradorId;
-            orcamento.Descricao = orcamentoModel.Descricao;
-            orcamento.ValorMaodeObra = orcamentoModel.ValorMaodeObra;
-            orcamento.ValorPeca = orcamentoModel.ValorPeca;
-            orcamento.ValorAdicional = orcamentoModel.ValorAdicional;
-            orcamento.PercentualDesconto = orcamentoModel.PercentualDesconto;
-            orcamento.ValorDesconto = orcamentoModel.ValorDesconto;
-            orcamento.ValorTotal = orcamentoModel.ValorTotal;
-            orcamento.Status = orcamentoModel.Status;
-            orcamento.Ativo = orcamentoModel.Ativo;
-            orcamento.DataAlteracao = orcamentoModel.DataAlteracao;
-
-            _SGMContext.Orcamento.Update(orcamento);
+            _SGMContext.Orcamento.Update(orcamentoModel);
             _SGMContext.SaveChanges();
         }
-
-
 
         public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
         {
