@@ -21,28 +21,28 @@ namespace SGM.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<OrcamentoViewModel> GetByAll()
+        public IEnumerable<OrcamentoViewModel> GetOrcamentoByAll()
         {
-            return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetByAll());
+            return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetOrcamentoByAll());
         }
 
-        public Count GetCount()
+        public Count GetOrcamentoCount()
         {
-            return _mapper.Map<Count>(_orcamentoRepository.GetCount());
+            return _mapper.Map<Count>(_orcamentoRepository.GetOrcamentoCount());
         }
 
-        public OrcamentoViewModel GetById(int orcamentoId)
+        public OrcamentoViewModel GetOrcamentoById(int orcamentoId)
         {
-            return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetById(orcamentoId));
+            return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetOrcamentoById(orcamentoId));
         }
 
-        public void AtualizarOrSalvar(OrcamentoViewModel model)
+        public int AtualizarOrSalvar(OrcamentoViewModel model)
         {
-            var orcamento = _orcamentoRepository.GetById(model.OrcamentoId);
+            var orcamento = _orcamentoRepository.GetOrcamentoById(model.OrcamentoId);
 
             if (orcamento == null)
             {
-                _orcamentoRepository.Salvar(new Orcamento()
+                return _orcamentoRepository.SalvarOrcamento(new Orcamento()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     Descricao = model.Descricao,
@@ -50,14 +50,14 @@ namespace SGM.ApplicationServices.Services
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
-                    Status = (int)StatusEnum.Gerado,
+                    Status = (int)StatusEnum.IniciadoPendente,
                     Ativo = true,
                     DataCadastro = DateTime.Now
                 });
             }
             else
             {
-                _orcamentoRepository.Atualizar(new Orcamento()
+                _orcamentoRepository.AtualizarOrcamento(new Orcamento()
                 {
                     OrcamentoId = model.OrcamentoId,
                     Descricao = model.Descricao,
@@ -68,7 +68,39 @@ namespace SGM.ApplicationServices.Services
                     Status = model.Status,
                     Ativo = model.Ativo
                 });
+
+                return 0;
             }
+        }
+
+        public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel)
+        {
+            return _orcamentoRepository.SalvarOrcamentoMaodeObra(_mapper.Map<OrcamentoMaodeObra>(orcamentoMaodeObraViewModel));
+        }
+
+        public int SalvarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel)
+        {
+            return _orcamentoRepository.SalvarOrcamentoPeca(_mapper.Map<OrcamentoPeca>(orcamentoPecaViewModel));
+        }
+
+        public void DeletarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel)
+        {
+            _orcamentoRepository.DeletarOrcamentoMaodeObra(_mapper.Map<OrcamentoMaodeObra>(orcamentoMaodeObraViewModel));
+        }
+
+        public void DeletarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel)
+        {
+            _orcamentoRepository.DeletarOrcamentoPeca(_mapper.Map<OrcamentoPeca>(orcamentoPecaViewModel));
+        }
+
+        public IList<OrcamentoMaodeObraViewModel> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId)
+        {
+            return _mapper.Map<IList<OrcamentoMaodeObraViewModel>>(_orcamentoRepository.GetOrcamentoMaodeObraByOrcamentoId(orcamentoId));
+        }
+
+        public IList<OrcamentoPecaViewModel> GetOrcamentoPecaByOrcamentoId(int orcamentoId)
+        {
+            return _mapper.Map<IList<OrcamentoPecaViewModel>>(_orcamentoRepository.GetOrcamentoPecaByOrcamentoId(orcamentoId));
         }
     }
 }

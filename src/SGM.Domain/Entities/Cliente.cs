@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SGM.Domain.Entities
 {
@@ -26,5 +27,6 @@ namespace SGM.Domain.Entities
         public bool ClienteAtivo { get; set; }
         public DateTime? DataCadastro { get; set; }
         public DateTime? DataAlteracao { get; set; }
+        public virtual IList<ClienteVeiculo> ClienteVeiculo { get; set; }
     }
 }

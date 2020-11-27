@@ -35,6 +35,21 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<Count>(_clienteRepository.GetCount());
         }
 
+        public ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente)
+        {
+            return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByDocumentoCliente(documentoCliente));
+        }
+
+        public ClienteViewModel GetClienteByPlacaVeiculo(string placaVeiculo)
+        {
+            return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByPlacaVeiculo(placaVeiculo));
+        }
+
+        public ClienteViewModel GetClienteByLikePlacaOrNomeOrApelido(string valor)
+        {
+            return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByLikePlacaOrNomeOrApelido(valor));
+        }
+
         public int Salvar(ClienteViewModel model)
         {
             var entidade = _mapper.Map<Cliente>(model);
@@ -105,11 +120,6 @@ namespace SGM.ApplicationServices.Services
                     DataAlteracao = DateTime.Now
                 });
             }
-        }
-
-        public ClienteViewModel GetClienteByDocumentoCliente(string documentoCliente)
-        {
-            return _mapper.Map<ClienteViewModel>(_clienteRepository.GetClienteByDocumentoCliente(documentoCliente));
         }
 
         /*

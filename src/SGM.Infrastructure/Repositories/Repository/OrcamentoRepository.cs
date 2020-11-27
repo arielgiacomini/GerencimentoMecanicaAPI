@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -16,14 +17,14 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext = sgmContext;
         }
 
-        public IEnumerable<Orcamento> GetByAll()
+        public IEnumerable<Orcamento> GetOrcamentoByAll()
         {
-            return _SGMContext.Orcamento.ToList();
+            return _SGMContext.Orcamento.AsNoTracking().ToList();
         }
 
-        public Count GetCount()
+        public Count GetOrcamentoCount()
         {
-            var contagem = _SGMContext.Orcamento.Count();
+            var contagem = GetOrcamentoByAll().Count();
 
             Count cont = new Count();
             {
@@ -33,20 +34,23 @@ namespace SGM.Infrastructure.Repositories.Repository
             return cont;
         }
 
-        public Orcamento GetById(int orcamentoId)
+        public Orcamento GetOrcamentoById(int orcamentoId)
         {
             return _SGMContext.Orcamento.Where(x => x.OrcamentoId == orcamentoId).FirstOrDefault();
         }
 
-        public void Salvar(Orcamento entidade)
+        public int SalvarOrcamento(Orcamento orcamento)
         {
-            _SGMContext.Orcamento.Add(entidade);
+            _SGMContext.Orcamento.Add(orcamento);
             _SGMContext.SaveChanges();
+
+            return orcamento.OrcamentoId;
         }
 
-        public void Atualizar(Orcamento entidade)
+        public void AtualizarOrcamento(Orcamento entidade)
         {
-            var orcamento = GetById(entidade.OrcamentoId);
+            var orcamento = GetOrcamentoById(entidade.OrcamentoId);
+
             orcamento.ClienteVeiculoId = entidade.ClienteVeiculoId;
             orcamento.Descricao = entidade.Descricao;
             orcamento.ValorAdicional = entidade.ValorAdicional;
@@ -58,6 +62,50 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             _SGMContext.Update(orcamento);
             _SGMContext.SaveChanges();
+        }
+
+
+
+        public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
+        {
+            _SGMContext.OrcamentoMaodeObra.Add(orcamentoMaodeObra);
+            _SGMContext.SaveChanges();
+
+            return orcamentoMaodeObra.Id;
+        }
+
+        public int SalvarOrcamentoPeca(OrcamentoPeca orcamentoPeca)
+        {
+            _SGMContext.OrcamentoPeca.Add(orcamentoPeca);
+            _SGMContext.SaveChanges();
+
+            return orcamentoPeca.Id;
+        }
+
+        public void DeletarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
+        {
+            _SGMContext.OrcamentoMaodeObra.Remove(orcamentoMaodeObra);
+            _SGMContext.SaveChanges();
+        }
+
+        public void DeletarOrcamentoPeca(OrcamentoPeca orcamentoPeca)
+        {
+            _SGMContext.OrcamentoPeca.Remove(orcamentoPeca);
+            _SGMContext.SaveChanges();
+        }
+
+        public IList<OrcamentoMaodeObra> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId)
+        {
+            var orcamentoMaodeObra = _SGMContext.OrcamentoMaodeObra.AsNoTracking().Where(orcamento => orcamento.OrcamentoId == orcamentoId).ToList();
+
+            return orcamentoMaodeObra;
+        }
+
+        public IList<OrcamentoPeca> GetOrcamentoPecaByOrcamentoId(int orcamentoId)
+        {
+            var orcamentoPeca = _SGMContext.OrcamentoPeca.AsNoTracking().Where(orcamento => orcamento.OrcamentoId == orcamentoId).ToList();
+
+            return orcamentoPeca;
         }
     }
 }

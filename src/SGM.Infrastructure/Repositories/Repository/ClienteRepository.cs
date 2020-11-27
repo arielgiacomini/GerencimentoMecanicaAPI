@@ -40,6 +40,65 @@ namespace SGM.Infrastructure.Repositories.Repository
             return cont;
         }
 
+        public Cliente GetClienteByDocumentoCliente(string documentoCliente)
+        {
+            return _SGMContext.Cliente.AsNoTracking().Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "") && cliente.ClienteAtivo).FirstOrDefault();
+        }
+
+        public Cliente GetClienteByPlacaVeiculo(string placaVeiculo)
+        {
+            var dados = _SGMContext
+                        .Cliente
+                        .AsNoTracking()
+                        .Join(_SGMContext.ClienteVeiculo,
+                              CL => CL.ClienteId,
+                              CLV => CLV.ClienteId,
+                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                        .Where(clienteVeiculo => clienteVeiculo.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == placaVeiculo.Replace("-", "") && clienteVeiculo.Cliente.ClienteAtivo && clienteVeiculo.ClienteVeiculo.Ativo)
+                        .Select(cliente => cliente.Cliente)
+                        .FirstOrDefault();
+
+            return dados;
+        }
+
+        public Cliente GetClienteByLikePlacaOrNomeOrApelido(string valor)
+        {
+            var cliente = _SGMContext
+                        .Cliente
+                        .AsNoTracking()
+                        .Join(_SGMContext.ClienteVeiculo,
+                              CL => CL.ClienteId,
+                              CLV => CLV.ClienteId,
+                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
+                                  || (cl.Cliente.NomeCliente.Contains(valor))
+                                  || (cl.Cliente.Apelido.Contains(valor))
+                                            && cl.Cliente.ClienteAtivo
+                                            && cl.ClienteVeiculo.Ativo))
+                        .Select(x => x.Cliente)
+                        .FirstOrDefault();
+
+            var clienteVeiculo = _SGMContext
+                        .Cliente
+                        .AsNoTracking()
+                        .Join(_SGMContext.ClienteVeiculo,
+                              CL => CL.ClienteId,
+                              CLV => CLV.ClienteId,
+                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
+                                  || (cl.Cliente.NomeCliente.Contains(valor))
+                                  || (cl.Cliente.Apelido.Contains(valor))
+                                            && cl.Cliente.ClienteAtivo
+                                            && cl.ClienteVeiculo.Ativo))
+                        .Select(x => x.ClienteVeiculo)
+                        .ToList();
+
+            var final = cliente;
+            final.ClienteVeiculo = clienteVeiculo;
+
+            return final;
+        }
+
         public int Salvar(Cliente entidade)
         {
             entidade.DataCadastro = DateTime.Now;
@@ -49,11 +108,6 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext.SaveChanges();
 
             return entidade.ClienteId;
-        }
-
-        public Cliente GetClienteByDocumentoCliente(string documentoCliente)
-        {
-            return _SGMContext.Cliente.AsNoTracking().Where(cliente => cliente.DocumentoCliente.Replace(".", "").Replace("-", "") == documentoCliente.Replace(".", "").Replace("-", "") && cliente.ClienteAtivo).FirstOrDefault();
         }
 
         public void InativarCliente(int clienteId)
