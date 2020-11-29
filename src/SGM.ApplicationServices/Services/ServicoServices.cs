@@ -45,14 +45,18 @@ namespace SGM.ApplicationServices.Services
                 _servicoRepository.SalvarServico(new Servico()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
+                    ColaboradorId = model.ColaboradorId,
                     Descricao = model.Descricao,
+                    ValorMaodeObra = model.ValorMaodeObra,
+                    ValorPeca = model.ValorPeca,
                     ValorAdicional = model.ValorAdicional,
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
                     Status = (int)StatusEnum.IniciadoPendente,
                     Ativo = true,
-                    DataCadastro = DateTime.Now
+                    DataCadastro = DateTime.Now,
+                    DataAlteracao = null
                 });
             }
             else
@@ -60,13 +64,17 @@ namespace SGM.ApplicationServices.Services
                 _servicoRepository.AtualizarServico(new Servico()
                 {
                     ServicoId = model.ServicoId,
+                    ColaboradorId = model.ColaboradorId,
                     Descricao = model.Descricao,
+                    ValorMaodeObra = model.ValorMaodeObra,
+                    ValorPeca = model.ValorPeca,
                     ValorAdicional = model.ValorAdicional,
                     PercentualDesconto = model.PercentualDesconto,
                     ValorDesconto = model.ValorDesconto,
                     ValorTotal = model.ValorTotal,
                     Status = model.Status,
-                    Ativo = model.Ativo
+                    Ativo = model.Ativo,
+                    DataAlteracao = DateTime.Now
                 });
             }
         }

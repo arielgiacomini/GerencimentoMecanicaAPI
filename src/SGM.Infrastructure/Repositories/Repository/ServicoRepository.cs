@@ -48,17 +48,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public void AtualizarServico(Servico model)
         {
-            var servico = GetServicoById(model.ServicoId);
-            servico.ClienteVeiculoId = model.ClienteVeiculoId;
-            servico.Descricao = model.Descricao;
-            servico.ValorAdicional = model.ValorAdicional;
-            servico.PercentualDesconto = model.PercentualDesconto;
-            servico.ValorDesconto = model.ValorDesconto;
-            servico.ValorTotal = model.ValorTotal;
-            servico.Status = model.Status;
-            servico.Ativo = model.Ativo;
-
-            _SGMContext.Update(servico);
+            _SGMContext.Servico.Update(model);
             _SGMContext.SaveChanges();
         }
 
