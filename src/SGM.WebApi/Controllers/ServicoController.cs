@@ -23,7 +23,7 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var servico = _servicoServices.GetByAll();
+                var servico = _servicoServices.GetServicoByAll();
                 return Ok(servico);
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var servico = _servicoServices.GetById(servicoId);
+                var servico = _servicoServices.GetServicoById(servicoId);
                 return Ok(servico);
             }
             catch (Exception ex)
@@ -71,6 +71,96 @@ namespace SGM.WebApi.Controllers
                 model.ServicoId = servicoId;
                 _servicoServices.AtualizarOrSalvar(model);
                 return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("servico/mao-de-obra")]
+        public IActionResult SalvarservicoMaodeObra(ServicoMaodeObraViewModel model)
+        {
+            try
+            {
+                var Id = _servicoServices.SalvarServicoMaodeObra(model);
+                return Created("", Id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("servico/peca")]
+        public IActionResult SalvarservicoPeca(ServicoPecaViewModel model)
+        {
+            try
+            {
+                var Id = _servicoServices.SalvarServicoPeca(model);
+                return Created("", Id);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpDelete]
+        [Route("servico/mao-de-obra")]
+        public IActionResult DeletarservicoMaodeObra(ServicoMaodeObraViewModel model)
+        {
+            try
+            {
+                _servicoServices.DeletarServicoMaodeObra(model);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpDelete]
+        [Route("servico/peca")]
+        public IActionResult DeletarservicoPeca(ServicoPecaViewModel model)
+        {
+            try
+            {
+                _servicoServices.DeletarServicoPeca(model);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("servico/mao-de-obra/{servicoId}")]
+        public IActionResult GetservicoMaodeObraByservicoId(int servicoId)
+        {
+            try
+            {
+                var servicoMaodeObra = _servicoServices.GetServicoMaodeObraByServicoId(servicoId);
+                return Ok(servicoMaodeObra);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("servico/peca/{servicoId}")]
+        public IActionResult GetservicoPecaByservicoId(int servicoId)
+        {
+            try
+            {
+                var servicoMaodeObra = _servicoServices.GetServicoPecaByServicoId(servicoId);
+                return Ok(servicoMaodeObra);
             }
             catch (Exception ex)
             {

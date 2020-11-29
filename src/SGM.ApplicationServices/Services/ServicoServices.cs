@@ -21,28 +21,28 @@ namespace SGM.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<ServicoViewModel> GetByAll()
+        public IEnumerable<ServicoViewModel> GetServicoByAll()
         {
-            return _mapper.Map<IEnumerable<ServicoViewModel>>(_servicoRepository.GetByAll());
+            return _mapper.Map<IEnumerable<ServicoViewModel>>(_servicoRepository.GetServicoByAll());
         }
 
-        public ServicoViewModel GetById(int servicoId)
+        public Count GetServicoCount()
         {
-            return _mapper.Map<ServicoViewModel>(_servicoRepository.GetById(servicoId));
+            return _mapper.Map<Count>(_servicoRepository.GetServicoCount());
         }
 
-        public Count GetCount()
+        public ServicoViewModel GetServicoById(int servicoId)
         {
-            return _mapper.Map<Count>(_servicoRepository.GetCount());
+            return _mapper.Map<ServicoViewModel>(_servicoRepository.GetServicoById(servicoId));
         }
 
         public void AtualizarOrSalvar(ServicoViewModel model)
         {
-            var servico = _servicoRepository.GetById(model.ServicoId);
+            var servico = _servicoRepository.GetServicoById(model.ServicoId);
 
             if (servico == null)
             {
-                _servicoRepository.Salvar(new Servico()
+                _servicoRepository.SalvarServico(new Servico()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     Descricao = model.Descricao,
@@ -57,7 +57,7 @@ namespace SGM.ApplicationServices.Services
             }
             else
             {
-                _servicoRepository.Atualizar(new Servico()
+                _servicoRepository.AtualizarServico(new Servico()
                 {
                     ServicoId = model.ServicoId,
                     Descricao = model.Descricao,
@@ -69,6 +69,36 @@ namespace SGM.ApplicationServices.Services
                     Ativo = model.Ativo
                 });
             }
+        }
+
+        public int SalvarServicoMaodeObra(ServicoMaodeObraViewModel servicoMaodeObraViewModel)
+        {
+            return _servicoRepository.SalvarServicoMaodeObra(_mapper.Map<ServicoMaodeObra>(servicoMaodeObraViewModel));
+        }
+
+        public int SalvarServicoPeca(ServicoPecaViewModel servicoPecaViewModel)
+        {
+            return _servicoRepository.SalvarServicoPeca(_mapper.Map<ServicoPeca>(servicoPecaViewModel));
+        }
+
+        public void DeletarServicoMaodeObra(ServicoMaodeObraViewModel servicoMaodeObraViewModel)
+        {
+            _servicoRepository.DeletarServicoMaodeObra(_mapper.Map<ServicoMaodeObra>(servicoMaodeObraViewModel));
+        }
+
+        public void DeletarServicoPeca(ServicoPecaViewModel servicoPecaViewModel)
+        {
+            _servicoRepository.DeletarServicoPeca(_mapper.Map<ServicoPeca>(servicoPecaViewModel));
+        }
+
+        public IList<ServicoMaodeObraViewModel> GetServicoMaodeObraByServicoId(int servicoId)
+        {
+            return _mapper.Map<IList<ServicoMaodeObraViewModel>>(_servicoRepository.GetServicoMaodeObraByServicoId(servicoId));
+        }
+
+        public IList<ServicoPecaViewModel> GetServicoPecaByServicoId(int servicoId)
+        {
+            return _mapper.Map<IList<ServicoPecaViewModel>>(_servicoRepository.GetServicoPecaByServicoId(servicoId));
         }
     }
 }

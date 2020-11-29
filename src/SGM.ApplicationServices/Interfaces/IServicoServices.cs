@@ -6,9 +6,15 @@ namespace SGM.ApplicationServices.Interfaces
 {
     public interface IServicoServices
     {
-        IEnumerable<ServicoViewModel> GetByAll();
-        Count GetCount();
-        ServicoViewModel GetById(int servicoId);
+        IEnumerable<ServicoViewModel> GetServicoByAll();
+        Count GetServicoCount();
+        ServicoViewModel GetServicoById(int servicoId);
         void AtualizarOrSalvar(ServicoViewModel model);
+        IList<ServicoPecaViewModel> GetServicoPecaByServicoId(int servicoId);
+        IList<ServicoMaodeObraViewModel> GetServicoMaodeObraByServicoId(int servicoId);
+        void DeletarServicoPeca(ServicoPecaViewModel servicoPecaViewModel);
+        void DeletarServicoMaodeObra(ServicoMaodeObraViewModel servicoMaodeObraViewModel);
+        int SalvarServicoPeca(ServicoPecaViewModel servicoPecaViewModel);
+        int SalvarServicoMaodeObra(ServicoMaodeObraViewModel servicoMaodeObraViewModel);
     }
 }

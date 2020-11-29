@@ -34,7 +34,7 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetOrcamentoById(orcamentoId));
         }
 
-        public int AtualizarOrSalvar(OrcamentoViewModel model)
+        public int AtualizarOrSalvarOrcamento(OrcamentoViewModel model)
         {
             var orcamento = _orcamentoRepository.GetOrcamentoById(model.OrcamentoId);
 
