@@ -47,24 +47,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return orcamento.OrcamentoId;
         }
 
-        public void AtualizarOrcamento(Orcamento entidade)
+        public void AtualizarOrcamento(Orcamento orcamentoModel)
         {
-            var orcamento = GetOrcamentoById(entidade.OrcamentoId);
-
-            orcamento.ClienteVeiculoId = entidade.ClienteVeiculoId;
-            orcamento.Descricao = entidade.Descricao;
-            orcamento.ValorAdicional = entidade.ValorAdicional;
-            orcamento.PercentualDesconto = entidade.PercentualDesconto;
-            orcamento.ValorDesconto = entidade.ValorDesconto;
-            orcamento.ValorTotal = entidade.ValorTotal;
-            orcamento.Status = entidade.Status;
-            orcamento.Ativo = entidade.Ativo;
-
-            _SGMContext.Update(orcamento);
+            _SGMContext.Orcamento.Update(orcamentoModel);
             _SGMContext.SaveChanges();
         }
-
-
 
         public int SalvarOrcamentoMaodeObra(OrcamentoMaodeObra orcamentoMaodeObra)
         {

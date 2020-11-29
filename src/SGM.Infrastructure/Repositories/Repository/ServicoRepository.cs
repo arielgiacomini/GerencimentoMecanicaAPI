@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Domain.Utils;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
@@ -16,35 +17,14 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext = sgmContext;
         }
 
-        public void Atualizar(Servico model)
+        public IEnumerable<Servico> GetServicoByAll()
         {
-            var servico = GetById(model.ServicoId);
-            servico.ClienteVeiculoId = model.ClienteVeiculoId;
-            servico.Descricao = model.Descricao;
-            servico.ValorAdicional = model.ValorAdicional;
-            servico.PercentualDesconto = model.PercentualDesconto;
-            servico.ValorDesconto = model.ValorDesconto;
-            servico.ValorTotal = model.ValorTotal;
-            servico.Status = model.Status;
-            servico.Ativo = model.Ativo;
-
-            _SGMContext.Update(servico);
-            _SGMContext.SaveChanges();
+            return _SGMContext.Servico.AsNoTracking().Where(servico => servico.Ativo).ToList();
         }
 
-        public IEnumerable<Servico> GetByAll()
+        public Count GetServicoCount()
         {
-            return _SGMContext.Servico.ToList();
-        }
-
-        public Servico GetById(int servicoId)
-        {
-            return _SGMContext.Servico.Where(x => x.ServicoId == servicoId).FirstOrDefault();
-        }
-
-        public Count GetCount()
-        {
-            var contagem = _SGMContext.Servico.Count();
+            var contagem = GetServicoByAll().Count();
 
             Count cont = new Count();
             {
@@ -55,10 +35,65 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         }
 
-        public void Salvar(Servico model)
+        public Servico GetServicoById(int servicoId)
+        {
+            return _SGMContext.Servico.AsNoTracking().Where(x => x.ServicoId == servicoId).FirstOrDefault();
+        }
+
+        public int SalvarServico(Servico model)
         {
             _SGMContext.Servico.Add(model);
             _SGMContext.SaveChanges();
+
+            return model.ServicoId;
+        }
+
+        public void AtualizarServico(Servico model)
+        {
+            _SGMContext.Servico.Update(model);
+            _SGMContext.SaveChanges();
+        }
+
+        public int SalvarServicoMaodeObra(ServicoMaodeObra servicoMaodeObra)
+        {
+            _SGMContext.ServicoMaodeObra.Add(servicoMaodeObra);
+            _SGMContext.SaveChanges();
+
+            return servicoMaodeObra.Id;
+        }
+
+        public int SalvarServicoPeca(ServicoPeca servicoPeca)
+        {
+            _SGMContext.ServicoPeca.Add(servicoPeca);
+            _SGMContext.SaveChanges();
+
+            return servicoPeca.Id;
+        }
+
+        public void DeletarServicoMaodeObra(ServicoMaodeObra servicoMaodeObra)
+        {
+            _SGMContext.ServicoMaodeObra.Remove(servicoMaodeObra);
+            _SGMContext.SaveChanges();
+        }
+
+        public void DeletarServicoPeca(ServicoPeca servicoPeca)
+        {
+            _SGMContext.ServicoPeca.Remove(servicoPeca);
+            _SGMContext.SaveChanges();
+        }
+
+        public IList<ServicoMaodeObra> GetServicoMaodeObraByServicoId(int servicoId)
+        {
+            var ServicoMaodeObra = _SGMContext.ServicoMaodeObra.AsNoTracking().Where(Servico => Servico.ServicoId == servicoId).ToList();
+
+            return ServicoMaodeObra;
+        }
+
+        public IList<ServicoPeca> GetServicoPecaByServicoId(int servicoId)
+        {
+            var ServicoPeca = _SGMContext.ServicoPeca.AsNoTracking().Where(Servico => Servico.ServicoId == servicoId).ToList();
+
+            return ServicoPeca;
         }
     }
 }

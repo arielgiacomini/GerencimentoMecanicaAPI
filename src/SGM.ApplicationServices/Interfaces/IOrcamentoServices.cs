@@ -9,7 +9,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<OrcamentoViewModel> GetOrcamentoByAll();
         Count GetOrcamentoCount();
         OrcamentoViewModel GetOrcamentoById(int orcamentoId);
-        int AtualizarOrSalvar(OrcamentoViewModel model);
+        int AtualizarOrSalvarOrcamento(OrcamentoViewModel model);
         int SalvarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel);
         int SalvarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel);
         void DeletarOrcamentoPeca(OrcamentoPecaViewModel orcamentoPecaViewModel);

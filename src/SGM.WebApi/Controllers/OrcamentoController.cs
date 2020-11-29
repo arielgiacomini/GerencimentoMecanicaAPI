@@ -53,7 +53,7 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var Id = _orcamentoServices.AtualizarOrSalvar(model);
+                var Id = _orcamentoServices.AtualizarOrSalvarOrcamento(model);
 
                 if (Id == 0)
                 {
@@ -75,7 +75,7 @@ namespace SGM.WebApi.Controllers
             try
             {
                 model.OrcamentoId = orcamentoId;
-                _orcamentoServices.AtualizarOrSalvar(model);
+                _orcamentoServices.AtualizarOrSalvarOrcamento(model);
                 return Ok();
             }
             catch (Exception ex)
