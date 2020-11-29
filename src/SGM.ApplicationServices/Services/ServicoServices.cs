@@ -36,13 +36,13 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<ServicoViewModel>(_servicoRepository.GetServicoById(servicoId));
         }
 
-        public void AtualizarOrSalvar(ServicoViewModel model)
+        public int AtualizarOrSalvar(ServicoViewModel model)
         {
             var servico = _servicoRepository.GetServicoById(model.ServicoId);
 
             if (servico == null)
             {
-                _servicoRepository.SalvarServico(new Servico()
+                return _servicoRepository.SalvarServico(new Servico()
                 {
                     ClienteVeiculoId = model.ClienteVeiculoId,
                     ColaboradorId = model.ColaboradorId,
@@ -74,8 +74,11 @@ namespace SGM.ApplicationServices.Services
                     ValorTotal = model.ValorTotal,
                     Status = model.Status,
                     Ativo = model.Ativo,
+                    DataCadastro = servico.DataCadastro,
                     DataAlteracao = DateTime.Now
                 });
+
+                return 0;
             }
         }
 

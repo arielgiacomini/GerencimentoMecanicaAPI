@@ -19,12 +19,12 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<Servico> GetServicoByAll()
         {
-            return _SGMContext.Servico.ToList();
+            return _SGMContext.Servico.AsNoTracking().Where(servico => servico.Ativo).ToList();
         }
 
         public Count GetServicoCount()
         {
-            var contagem = _SGMContext.Servico.Count();
+            var contagem = GetServicoByAll().Count();
 
             Count cont = new Count();
             {
@@ -37,13 +37,15 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Servico GetServicoById(int servicoId)
         {
-            return _SGMContext.Servico.Where(x => x.ServicoId == servicoId).FirstOrDefault();
+            return _SGMContext.Servico.AsNoTracking().Where(x => x.ServicoId == servicoId).FirstOrDefault();
         }
 
-        public void SalvarServico(Servico model)
+        public int SalvarServico(Servico model)
         {
             _SGMContext.Servico.Add(model);
             _SGMContext.SaveChanges();
+
+            return model.ServicoId;
         }
 
         public void AtualizarServico(Servico model)

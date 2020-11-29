@@ -53,8 +53,14 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                _servicoServices.AtualizarOrSalvar(model);
-                return Ok();
+                var Id = _servicoServices.AtualizarOrSalvar(model);
+
+                if (Id == 0)
+                {
+                    return Ok();
+                }
+
+                return Created("", Id);
             }
             catch (Exception ex)
             {

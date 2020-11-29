@@ -9,7 +9,7 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IEnumerable<Servico> GetServicoByAll();
         Count GetServicoCount();
         Servico GetServicoById(int servicoId);
-        void SalvarServico(Servico model);
+        int SalvarServico(Servico model);
         void AtualizarServico(Servico model);
         int SalvarServicoMaodeObra(ServicoMaodeObra servicoMaodeObra);
         int SalvarServicoPeca(ServicoPeca servicoPeca);

@@ -9,7 +9,7 @@ namespace SGM.ApplicationServices.Interfaces
         IEnumerable<ServicoViewModel> GetServicoByAll();
         Count GetServicoCount();
         ServicoViewModel GetServicoById(int servicoId);
-        void AtualizarOrSalvar(ServicoViewModel model);
+        int AtualizarOrSalvar(ServicoViewModel model);
         IList<ServicoPecaViewModel> GetServicoPecaByServicoId(int servicoId);
         IList<ServicoMaodeObraViewModel> GetServicoMaodeObraByServicoId(int servicoId);
         void DeletarServicoPeca(ServicoPecaViewModel servicoPecaViewModel);
