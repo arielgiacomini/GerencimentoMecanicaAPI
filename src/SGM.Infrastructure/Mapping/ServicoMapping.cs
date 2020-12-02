@@ -8,7 +8,7 @@ namespace SGM.Infrastructure.Mapping
     {
         public void Configure(EntityTypeBuilder<Servico> builder)
         {
-            builder.ToTable("Servicos");
+            builder.ToTable("Servico");
             builder.HasKey(x => x.ServicoId);
             builder.Property(x => x.ServicoId).IsRequired().ValueGeneratedOnAdd();
             builder.Property(x => x.ClienteVeiculoId);

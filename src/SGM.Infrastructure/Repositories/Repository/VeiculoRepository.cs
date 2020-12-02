@@ -41,7 +41,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IList<Veiculo> GetVeiculoByMarcaId(int marcaId)
         {
-           return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.MarcaId == marcaId).ToList();
+            return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.MarcaId == marcaId).ToList();
         }
 
         public void InativarVeiculo(int veiculoId)
