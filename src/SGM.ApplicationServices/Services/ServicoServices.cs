@@ -64,6 +64,7 @@ namespace SGM.ApplicationServices.Services
                 _servicoRepository.AtualizarServico(new Servico()
                 {
                     ServicoId = model.ServicoId,
+                    ClienteVeiculoId = model.ClienteVeiculoId,
                     ColaboradorId = model.ColaboradorId,
                     Descricao = model.Descricao,
                     ValorMaodeObra = model.ValorMaodeObra,
