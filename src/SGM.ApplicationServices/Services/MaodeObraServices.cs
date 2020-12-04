@@ -20,19 +20,34 @@ namespace SGM.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<MaodeObraViewModel> GetByAll()
+        public IEnumerable<MaodeObraViewModel> GetMaodeObraByAll()
         {
-            return _mapper.Map<IEnumerable<MaodeObraViewModel>>(_maoDeObraRepository.GetByAll());
+            return _mapper.Map<IEnumerable<MaodeObraViewModel>>(_maoDeObraRepository.GetMaodeObraByAll());
         }
 
-        public IEnumerable<MaodeObraViewModel> GetByAllPaginado(int page)
+        public IEnumerable<MaodeObraViewModel> GetMaodeObraByAllPaginado(int page)
         {
-            return _mapper.Map<IEnumerable<MaodeObraViewModel>>(_maoDeObraRepository.GetByAllPaginado(page));
+            return _mapper.Map<IEnumerable<MaodeObraViewModel>>(_maoDeObraRepository.GetMaodeObraByAllPaginado(page));
+        }
+
+        public Count GetMaodeObraCount()
+        {
+            return _mapper.Map<Count>(_maoDeObraRepository.GetMaodeObraCount());
+        }
+
+        public MaodeObraViewModel GetMaodeObraById(int maodeObraId)
+        {
+            return _mapper.Map<MaodeObraViewModel>(_maoDeObraRepository.GetMaodeObraById(maodeObraId));
+        }
+
+        public IList<MaodeObraViewModel> GetMaodeObraByDescricao(string descricao)
+        {
+            return _mapper.Map<IList<MaodeObraViewModel>>(_maoDeObraRepository.GetMaodeObraByDescricao(descricao));
         }
 
         public void InativarMaodeObra(int maoDeObraId)
         {
-            var maoDeObra = _maoDeObraRepository.GetById(maoDeObraId);
+            var maoDeObra = _maoDeObraRepository.GetMaodeObraById(maoDeObraId);
 
             _maoDeObraRepository.InativarMaoDeObra(new MaodeObra()
             {
@@ -47,19 +62,9 @@ namespace SGM.ApplicationServices.Services
             });
         }
 
-        public MaodeObraViewModel GetById(int maodeObraId)
-        {
-            return _mapper.Map<MaodeObraViewModel>(_maoDeObraRepository.GetById(maodeObraId));
-        }
-
-        public Count GetCount()
-        {
-            return _mapper.Map<Count>(_maoDeObraRepository.GetCount());
-        }
-
         public void AtualizarOrSalvar(MaodeObraViewModel model)
         {
-            var maoDeObra = _maoDeObraRepository.GetById(model.MaodeObraId);
+            var maoDeObra = _maoDeObraRepository.GetMaodeObraById(model.MaodeObraId);
 
             if (maoDeObra == null)
             {

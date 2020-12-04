@@ -24,22 +24,22 @@ namespace SGM.ApplicationServices.Services
 
         public IEnumerable<VeiculoViewModel> GetByAll()
         {
-            return _mapper.Map<IEnumerable<VeiculoViewModel>>(_veiculoRepository.GetByAll());
+            return _mapper.Map<IEnumerable<VeiculoViewModel>>(_veiculoRepository.GetVeiculoByAll());
         }
 
         public Count GetCount()
         {
-            return _mapper.Map<Count>(_veiculoRepository.GetCount());
+            return _mapper.Map<Count>(_veiculoRepository.GetVeiculoCount());
         }
 
         public VeiculoViewModel GetById(int orcamentoId)
         {
-            return _mapper.Map<VeiculoViewModel>(_veiculoRepository.GetById(orcamentoId));
+            return _mapper.Map<VeiculoViewModel>(_veiculoRepository.GetVeiculoById(orcamentoId));
         }
 
-        public IList<VeiculoViewModel> GetVeiculosByMarcaId(int marcaId)
+        public IList<VeiculoViewModel> GetVeiculoByDescricaoModelo(string descricaoModelo)
         {
-            return _mapper.Map<IList<VeiculoViewModel>>(_veiculoRepository.GetVeiculoByMarcaId(marcaId));
+            return _mapper.Map<IList<VeiculoViewModel>>(_veiculoRepository.GetVeiculoByDescricaoModelo(descricaoModelo));
         }
 
         public void InativarVeiculo(int veiculoId)
@@ -49,7 +49,7 @@ namespace SGM.ApplicationServices.Services
 
         public int AtualizarOrSalvar(VeiculoViewModel model)
         {
-            var veiculo = _veiculoRepository.GetById(model.VeiculoId);
+            var veiculo = _veiculoRepository.GetVeiculoById(model.VeiculoId);
 
             if (veiculo == null)
             {
@@ -74,6 +74,11 @@ namespace SGM.ApplicationServices.Services
 
                 return 0;
             }
+        }
+
+        public IList<VeiculoViewModel> GetVeiculosByMarcaId(int marcaId)
+        {
+            return _mapper.Map<IList<VeiculoViewModel>>(_veiculoRepository.GetVeiculoByMarcaId(marcaId));
         }
 
         public VeiculoMarcaViewModel GetMarcaByMarcaId(int marcaId)

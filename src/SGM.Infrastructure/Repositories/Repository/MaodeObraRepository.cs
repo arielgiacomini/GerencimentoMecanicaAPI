@@ -17,20 +17,20 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext = sgmContext;
         }
 
-        public IEnumerable<MaodeObra> GetByAll()
+        public IEnumerable<MaodeObra> GetMaodeObraByAll()
         {
             return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).ToList();
         }
 
-        public IEnumerable<MaodeObra> GetByAllPaginado(int page)
+        public IEnumerable<MaodeObra> GetMaodeObraByAllPaginado(int page)
         {
 
             return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).Skip((page - 1) * 5).Take(5).ToList();
         }
 
-        public Count GetCount()
+        public Count GetMaodeObraCount()
         {
-            var contagem = _SGMContext.MaodeObra.AsNoTracking().Where(x => x.Ativo).AsNoTracking().Count();
+            var contagem = GetMaodeObraByAll().Count();
 
             Count cont = new Count();
             {
@@ -40,9 +40,14 @@ namespace SGM.Infrastructure.Repositories.Repository
             return cont;
         }
 
-        public MaodeObra GetById(int maoDeObraId)
+        public MaodeObra GetMaodeObraById(int maoDeObraId)
         {
             return _SGMContext.MaodeObra.AsNoTracking().Where(x => x.MaodeObraId == maoDeObraId).FirstOrDefault();
+        }
+
+        public IList<MaodeObra> GetMaodeObraByDescricao(string descricao)
+        {
+            return _SGMContext.MaodeObra.AsNoTracking().Where(mao => mao.Descricao.Contains(descricao)).ToList();
         }
 
         public void InativarMaoDeObra(MaodeObra maoDeObra)
@@ -59,7 +64,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public void Atualizar(MaodeObra entidade)
         {
-            var maoDeObra = GetById(entidade.MaodeObraId);
+            var maoDeObra = GetMaodeObraById(entidade.MaodeObraId);
 
             maoDeObra.Descricao = entidade.Descricao;
             maoDeObra.Tipo = entidade.Tipo;

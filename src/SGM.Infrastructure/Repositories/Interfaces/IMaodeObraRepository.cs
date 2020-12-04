@@ -6,12 +6,13 @@ namespace SGM.Infrastructure.Repositories.Interfaces
 {
     public interface IMaodeObraRepository
     {
-        IEnumerable<MaodeObra> GetByAll();
-        IEnumerable<MaodeObra> GetByAllPaginado(int page);
-        Count GetCount();
-        MaodeObra GetById(int orcamentoId);
+        IEnumerable<MaodeObra> GetMaodeObraByAll();
+        IEnumerable<MaodeObra> GetMaodeObraByAllPaginado(int page);
+        Count GetMaodeObraCount();
+        MaodeObra GetMaodeObraById(int orcamentoId);
         void InativarMaoDeObra(MaodeObra maoDeObra);
         void Salvar(MaodeObra model);
         void Atualizar(MaodeObra model);
+        IList<MaodeObra> GetMaodeObraByDescricao(string descricao);
     }
 }

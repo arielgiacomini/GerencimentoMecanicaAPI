@@ -19,24 +19,29 @@ namespace SGM.ApplicationServices.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<PecaViewModel> GetByAll()
+        public IEnumerable<PecaViewModel> GetPecaByAll()
         {
-            return _mapper.Map<IEnumerable<PecaViewModel>>(_PecaRepository.GetByAll());
+            return _mapper.Map<IEnumerable<PecaViewModel>>(_PecaRepository.GetPecaByAll());
         }
 
-        public IEnumerable<PecaViewModel> GetByAllPaginado(int page)
+        public IEnumerable<PecaViewModel> GetPecaByAllPaginado(int page)
         {
-            return _mapper.Map<IEnumerable<PecaViewModel>>(_PecaRepository.GetByAllPaginado(page));
+            return _mapper.Map<IEnumerable<PecaViewModel>>(_PecaRepository.GetPecaByAllPaginado(page));
         }
 
-        public Count GetCount()
+        public Count GetPecaCount()
         {
-            return _mapper.Map<Count>(_PecaRepository.GetCount());
+            return _mapper.Map<Count>(_PecaRepository.GetPecaCount());
         }
 
-        public PecaViewModel GetById(int PecaId)
+        public PecaViewModel GetPecaById(int PecaId)
         {
             return _mapper.Map<PecaViewModel>(_PecaRepository.GetById(PecaId));
+        }
+
+        public IList<PecaViewModel> GetPecaByDescricao(string descricao)
+        {
+            return _mapper.Map<IList<PecaViewModel>>(_PecaRepository.GetPecaByDescricao(descricao));
         }
 
         public void InativarPeca(int pecaId)
@@ -74,7 +79,5 @@ namespace SGM.ApplicationServices.Services
                 });
             }
         }
-
-
     }
 }

@@ -23,7 +23,7 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var maoDeObra = _maodeObraServices.GetByAll();
+                var maoDeObra = _maodeObraServices.GetMaodeObraByAll();
                 return Ok(maoDeObra);
             }
             catch (Exception ex)
@@ -38,12 +38,12 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var count = _maodeObraServices.GetCount();
+                var count = _maodeObraServices.GetMaodeObraCount();
 
                 HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
 
                 var pagina = page;
-                var maoDeObra = _maodeObraServices.GetByAllPaginado(page);
+                var maoDeObra = _maodeObraServices.GetMaodeObraByAllPaginado(page);
                 return Ok(maoDeObra);
             }
             catch (Exception ex)
@@ -58,7 +58,22 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var maoDeObra = _maodeObraServices.GetById(maoDeObraId);
+                var maoDeObra = _maodeObraServices.GetMaodeObraById(maoDeObraId);
+                return Ok(maoDeObra);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("mao-de-obra/descricao")]
+        public IActionResult GetMaodeObraByDescricao(string descricaoMaodeObra)
+        {
+            try
+            {
+                var maoDeObra = _maodeObraServices.GetMaodeObraByDescricao(descricaoMaodeObra);
                 return Ok(maoDeObra);
             }
             catch (Exception ex)

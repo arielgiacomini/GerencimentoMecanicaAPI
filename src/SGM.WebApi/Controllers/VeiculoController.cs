@@ -19,7 +19,7 @@ namespace SGM.WebApi.Controllers
 
         [HttpGet]
         [Route("veiculo")]
-        public IActionResult GetOrcamentosForAll()
+        public IActionResult GetVeiculoForAll()
         {
             try
             {
@@ -34,11 +34,26 @@ namespace SGM.WebApi.Controllers
 
         [HttpGet]
         [Route("veiculo/{veiculoId}")]
-        public IActionResult GetOrcamentosById(int veiculoId)
+        public IActionResult GetVeiculoById(int veiculoId)
         {
             try
             {
                 var veiculo = _veiculoServices.GetById(veiculoId);
+                return Ok(veiculo);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("veiculo/descricao-modelo/")]
+        public IActionResult GetVeiculoByModeloDescricao(string descricaoModelo)
+        {
+            try
+            {
+                var veiculo = _veiculoServices.GetVeiculoByDescricaoModelo(descricaoModelo);
                 return Ok(veiculo);
             }
             catch (Exception ex)
