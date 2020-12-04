@@ -17,5 +17,6 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         void DeletarOrcamentoPeca(OrcamentoPeca orcamentoPeca);
         IList<OrcamentoMaodeObra> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId);
         IList<OrcamentoPeca> GetOrcamentoPecaByOrcamentoId(int orcamentoId);
+        IList<Orcamento> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId);
     }
 }

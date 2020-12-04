@@ -47,6 +47,21 @@ namespace SGM.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("orcamento/veiculo-cliente/")]
+        public IActionResult GetOrcamentoClienteVeiculoId(int clienteVeiculoId)
+        {
+            try
+            {
+                var orcamento = _orcamentoServices.GetOrcamentoByClienteVeiculoId(clienteVeiculoId);
+                return Ok(orcamento);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         [HttpPost]
         [Route("orcamento")]
         public IActionResult Salvar(OrcamentoViewModel model)

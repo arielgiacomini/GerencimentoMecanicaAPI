@@ -39,6 +39,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Orcamento.Where(x => x.OrcamentoId == orcamentoId).FirstOrDefault();
         }
 
+        public IList<Orcamento> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _SGMContext.Orcamento.AsNoTracking().Where(orcamento => orcamento.ClienteVeiculoId == clienteVeiculoId).ToList();
+        }
+
         public int SalvarOrcamento(Orcamento orcamento)
         {
             _SGMContext.Orcamento.Add(orcamento);

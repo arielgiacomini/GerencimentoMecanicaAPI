@@ -34,6 +34,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetOrcamentoById(orcamentoId));
         }
 
+        public IList<OrcamentoViewModel> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _mapper.Map<IList<OrcamentoViewModel>>(_orcamentoRepository.GetOrcamentoByClienteVeiculoId(clienteVeiculoId));
+        }
+
         public int AtualizarOrSalvarOrcamento(OrcamentoViewModel model)
         {
             var orcamento = _orcamentoRepository.GetOrcamentoById(model.OrcamentoId);
