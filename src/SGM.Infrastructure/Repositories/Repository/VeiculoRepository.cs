@@ -17,12 +17,12 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext = sgmContext;
         }
 
-        public IEnumerable<Veiculo> GetByAll()
+        public IEnumerable<Veiculo> GetVeiculoByAll()
         {
             return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.VeiculoAtivo).ToList();
         }
 
-        public Count GetCount()
+        public Count GetVeiculoCount()
         {
             var contagem = _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.VeiculoAtivo).Count();
 
@@ -34,19 +34,19 @@ namespace SGM.Infrastructure.Repositories.Repository
             return cont;
         }
 
-        public Veiculo GetById(int veiculoId)
+        public Veiculo GetVeiculoById(int veiculoId)
         {
             return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.VeiculoId == veiculoId).FirstOrDefault();
         }
 
-        public IList<Veiculo> GetVeiculoByMarcaId(int marcaId)
+        public IList<Veiculo> GetVeiculoByDescricaoModelo(string descricaoModelo)
         {
-            return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.MarcaId == marcaId).ToList();
+            return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.Modelo.Contains(descricaoModelo)).ToList();
         }
 
         public void InativarVeiculo(int veiculoId)
         {
-            var veiculo = GetById(veiculoId);
+            var veiculo = GetVeiculoById(veiculoId);
 
             veiculo.VeiculoAtivo = false;
 
@@ -64,7 +64,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public void Atualizar(Veiculo entidade)
         {
-            var orcamento = GetById(entidade.VeiculoId);
+            var orcamento = GetVeiculoById(entidade.VeiculoId);
 
             orcamento.MarcaId = entidade.MarcaId;
             orcamento.Modelo = entidade.Modelo;
@@ -72,6 +72,11 @@ namespace SGM.Infrastructure.Repositories.Repository
 
             _SGMContext.Veiculo.Update(orcamento);
             _SGMContext.SaveChanges();
+        }
+
+        public IList<Veiculo> GetVeiculoByMarcaId(int marcaId)
+        {
+            return _SGMContext.Veiculo.AsNoTracking().Where(veiculo => veiculo.MarcaId == marcaId).ToList();
         }
     }
 }

@@ -6,12 +6,13 @@ namespace SGM.Infrastructure.Repositories.Interfaces
 {
     public interface IVeiculoRepository
     {
-        IEnumerable<Veiculo> GetByAll();
-        Count GetCount();
-        Veiculo GetById(int orcamentoId);
+        IEnumerable<Veiculo> GetVeiculoByAll();
+        Count GetVeiculoCount();
+        Veiculo GetVeiculoById(int orcamentoId);
         IList<Veiculo> GetVeiculoByMarcaId(int marcaId);
         void InativarVeiculo(int veiculoId);
         int Salvar(Veiculo entidade);
         void Atualizar(Veiculo model);
+        IList<Veiculo> GetVeiculoByDescricaoModelo(string descricaoModelo);
     }
 }

@@ -14,5 +14,6 @@ namespace SGM.ApplicationServices.Interfaces
         int AtualizarOrSalvar(VeiculoViewModel model);
         VeiculoMarcaViewModel GetMarcaByMarcaId(int marcaId);
         IList<VeiculoMarcaViewModel> GetMarcasByAll();
+        IList<VeiculoViewModel> GetVeiculoByDescricaoModelo(string descricaoModelo);
     }
 }
