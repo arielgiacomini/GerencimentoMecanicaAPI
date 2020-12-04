@@ -17,19 +17,19 @@ namespace SGM.Infrastructure.Repositories.Repository
             _SGMContext = sgmContext;
         }
 
-        public IEnumerable<Peca> GetByAll()
+        public IEnumerable<Peca> GetPecaByAll()
         {
             return _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).ToList();
         }
 
-        public IEnumerable<Peca> GetByAllPaginado(int page)
+        public IEnumerable<Peca> GetPecaByAllPaginado(int page)
         {
             return _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).Skip((page - 1) * 5).Take(5).ToList();
         }
 
-        public Count GetCount()
+        public Count GetPecaCount()
         {
-            var contagem = _SGMContext.Peca.AsNoTracking().Where(peca => peca.Ativo).Count();
+            var contagem = GetPecaByAll().Count();
 
             Count cont = new Count();
             {
@@ -42,6 +42,11 @@ namespace SGM.Infrastructure.Repositories.Repository
         public Peca GetById(int pecaId)
         {
             return _SGMContext.Peca.AsNoTracking().Where(x => x.PecaId == pecaId).FirstOrDefault();
+        }
+
+        public IList<Peca> GetPecaByDescricao(string descricao)
+        {
+            return _SGMContext.Peca.AsNoTracking().Where(peca => peca.Descricao.Contains(descricao)).ToList();
         }
 
         public void InativarPeca(int pecaId)

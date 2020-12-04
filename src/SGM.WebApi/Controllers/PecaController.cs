@@ -24,7 +24,7 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var peca = _pecaServices.GetByAll();
+                var peca = _pecaServices.GetPecaByAll();
                 return Ok(peca);
             }
             catch (Exception ex)
@@ -39,12 +39,12 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var count = _pecaServices.GetCount();
+                var count = _pecaServices.GetPecaCount();
 
                 HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
 
                 var pagina = page;
-                var peca = _pecaServices.GetByAllPaginado(page);
+                var peca = _pecaServices.GetPecaByAllPaginado(page);
                 return Ok(peca);
             }
             catch (Exception ex)
@@ -59,7 +59,22 @@ namespace SGM.WebApi.Controllers
         {
             try
             {
-                var peca = _pecaServices.GetById(pecaId);
+                var peca = _pecaServices.GetPecaById(pecaId);
+                return Ok(peca);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("peca/descricao")]
+        public IActionResult GetPecaByDescricao(string descricaoPeca)
+        {
+            try
+            {
+                var peca = _pecaServices.GetPecaByDescricao(descricaoPeca);
                 return Ok(peca);
             }
             catch (Exception ex)

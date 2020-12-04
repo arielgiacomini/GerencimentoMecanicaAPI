@@ -6,13 +6,14 @@ namespace SGM.Infrastructure.Repositories.Interfaces
 {
     public interface IPecaRepository
     {
-        IEnumerable<Peca> GetByAll();
-        IEnumerable<Peca> GetByAllPaginado(int page);
-        Count GetCount();
+        IEnumerable<Peca> GetPecaByAll();
+        IEnumerable<Peca> GetPecaByAllPaginado(int page);
+        Count GetPecaCount();
         Peca GetById(int pecaId);
         void InativarPeca(int pecaId);
         void Salvar(Peca model);
         void Atualizar(Peca model);
+        IList<Peca> GetPecaByDescricao(string descricao);
     }
 }
 
