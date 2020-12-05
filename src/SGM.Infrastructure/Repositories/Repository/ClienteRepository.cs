@@ -63,40 +63,56 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Cliente GetClienteByLikePlacaOrNomeOrApelido(string valor)
         {
-            var cliente = _SGMContext
-                        .Cliente
-                        .AsNoTracking()
-                        .Join(_SGMContext.ClienteVeiculo,
-                              CL => CL.ClienteId,
-                              CLV => CLV.ClienteId,
-                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
-                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
-                                  || (cl.Cliente.NomeCliente.Contains(valor))
-                                  || (cl.Cliente.Apelido.Contains(valor))
-                                            && cl.Cliente.ClienteAtivo
-                                            && cl.ClienteVeiculo.Ativo))
-                        .Select(x => x.Cliente)
-                        .FirstOrDefault();
+            var cliente = _SGMContext.Cliente.AsNoTracking().Where(x => x.NomeCliente.Contains(valor) || x.Apelido.Contains(valor)).FirstOrDefault();
+            
+            if (cliente == null)
+            {
+                return new Cliente();
+            }
+            
+            bool existeVeiculo = _SGMContext.ClienteVeiculo.AsNoTracking().Where(g => g.ClienteId == cliente.ClienteId).Any();
 
-            var clienteVeiculo = _SGMContext
-                        .Cliente
-                        .AsNoTracking()
-                        .Join(_SGMContext.ClienteVeiculo,
-                              CL => CL.ClienteId,
-                              CLV => CLV.ClienteId,
-                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
-                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
-                                  || (cl.Cliente.NomeCliente.Contains(valor))
-                                  || (cl.Cliente.Apelido.Contains(valor))
-                                            && cl.Cliente.ClienteAtivo
-                                            && cl.ClienteVeiculo.Ativo))
-                        .Select(x => x.ClienteVeiculo)
-                        .ToList();
+            if (cliente != null && existeVeiculo)
+            {
+                var clienteComJoin = _SGMContext
+                                        .Cliente
+                                        .AsNoTracking()
+                                        .Join(_SGMContext.ClienteVeiculo,
+                                              CL => CL.ClienteId,
+                                              CLV => CLV.ClienteId,
+                                              (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                                        .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
+                                                  || (cl.Cliente.NomeCliente.Contains(valor))
+                                                  || (cl.Cliente.Apelido.Contains(valor))
+                                                            && cl.Cliente.ClienteAtivo
+                                                            && cl.ClienteVeiculo.Ativo))
+                                        .Select(x => x.Cliente)
+                                        .FirstOrDefault();
 
-            var final = cliente;
-            final.ClienteVeiculo = clienteVeiculo;
+                var clienteVeiculo = _SGMContext
+                            .Cliente
+                            .AsNoTracking()
+                            .Join(_SGMContext.ClienteVeiculo,
+                                  CL => CL.ClienteId,
+                                  CLV => CLV.ClienteId,
+                                  (CL, CLV) => new { Cliente = CL, ClienteVeiculo = CLV })
+                            .Where(cl => ((cl.ClienteVeiculo.PlacaVeiculo.Replace("-", "") == valor.Replace("-", ""))
+                                      || (cl.Cliente.NomeCliente.Contains(valor))
+                                      || (cl.Cliente.Apelido.Contains(valor))
+                                                && cl.Cliente.ClienteAtivo
+                                                && cl.ClienteVeiculo.Ativo))
+                            .Select(x => x.ClienteVeiculo)
+                            .ToList();
 
-            return final;
+                var final = clienteComJoin;
+                final.ClienteVeiculo = clienteVeiculo;
+
+                return final;
+            }
+            else
+            {
+                return cliente;
+            }
         }
 
         public int Salvar(Cliente entidade)
