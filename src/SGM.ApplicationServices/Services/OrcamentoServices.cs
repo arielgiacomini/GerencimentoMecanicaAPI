@@ -24,6 +24,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetOrcamentoByAll());
         }
 
+        public IList<OrcamentoViewModel> GetUltimosOrcamentos(int quantidade)
+        {
+            return _mapper.Map<IList<OrcamentoViewModel>>(_orcamentoRepository.GetUltimosOrcamento(quantidade));
+        }
+
         public Count GetOrcamentoCount()
         {
             return _mapper.Map<Count>(_orcamentoRepository.GetOrcamentoCount());

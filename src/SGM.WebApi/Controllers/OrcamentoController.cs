@@ -33,6 +33,26 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("orcamento/ultimos-gerados")]
+        public IActionResult GetUltimosOrcamentos(int quantidade)
+        {
+            try
+            {
+                var count = _orcamentoServices.GetOrcamentoCount();
+
+                HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
+
+                var ultimosOrcamentos = _orcamentoServices.GetUltimosOrcamentos(quantidade);
+
+                return Ok(ultimosOrcamentos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
         [Route("orcamento/{orcamentoId}")]
         public IActionResult GetOrcamentosById(int orcamentoId)
         {

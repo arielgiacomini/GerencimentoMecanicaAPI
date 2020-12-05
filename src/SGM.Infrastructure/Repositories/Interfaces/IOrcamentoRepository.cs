@@ -18,5 +18,6 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         IList<OrcamentoMaodeObra> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId);
         IList<OrcamentoPeca> GetOrcamentoPecaByOrcamentoId(int orcamentoId);
         IList<Orcamento> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId);
+        IList<Orcamento> GetUltimosOrcamento(int quantidade);
     }
 }

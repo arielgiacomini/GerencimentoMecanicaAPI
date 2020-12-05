@@ -22,6 +22,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Orcamento.AsNoTracking().ToList();
         }
 
+        public IList<Orcamento> GetUltimosOrcamento(int quantidade)
+        {
+            return GetOrcamentoByAll().OrderByDescending(x => x.DataCadastro).Take(quantidade).ToList();
+        }
+
         public Count GetOrcamentoCount()
         {
             var contagem = GetOrcamentoByAll().Count();
