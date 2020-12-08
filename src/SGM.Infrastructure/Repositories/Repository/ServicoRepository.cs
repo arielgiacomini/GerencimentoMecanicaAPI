@@ -22,6 +22,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Servico.AsNoTracking().Where(servico => servico.Ativo).ToList();
         }
 
+        public IList<Servico> GetUltimosServico(int quantidade)
+        {
+            return GetServicoByAll().OrderByDescending(x => x.DataCadastro).Take(quantidade).ToList();
+        }
+
         public Count GetServicoCount()
         {
             var contagem = GetServicoByAll().Count();

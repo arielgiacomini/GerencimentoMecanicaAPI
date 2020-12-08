@@ -17,5 +17,6 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         void DeletarServicoPeca(ServicoPeca servicoPeca);
         IList<ServicoMaodeObra> GetServicoMaodeObraByServicoId(int servicoId);
         IList<ServicoPeca> GetServicoPecaByServicoId(int servicoId);
+        IList<Servico> GetUltimosServico(int quantidade);
     }
 }

@@ -26,6 +26,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<ServicoViewModel>>(_servicoRepository.GetServicoByAll());
         }
 
+        public IList<ServicoViewModel> GetUltimosServicos(int quantidade)
+        {
+            return _mapper.Map<IList<ServicoViewModel>>(_servicoRepository.GetUltimosServico(quantidade));
+        }
+
         public Count GetServicoCount()
         {
             return _mapper.Map<Count>(_servicoRepository.GetServicoCount());
