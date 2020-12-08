@@ -130,6 +130,12 @@ namespace SGM.WebApi.Controllers
             try
             {
                 var cliente = _clienteServices.GetClienteByLikePlacaOrNomeOrApelido(valor);
+
+                if (cliente.ClienteId == 0)
+                {
+                    return NoContent();
+                }
+
                 return Ok(cliente);
             }
             catch (Exception ex)

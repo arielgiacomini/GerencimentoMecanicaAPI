@@ -22,6 +22,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Orcamento.AsNoTracking().ToList();
         }
 
+        public IList<Orcamento> GetUltimosOrcamento(int quantidade)
+        {
+            return GetOrcamentoByAll().OrderByDescending(x => x.DataCadastro).Take(quantidade).ToList();
+        }
+
         public Count GetOrcamentoCount()
         {
             var contagem = GetOrcamentoByAll().Count();
@@ -37,6 +42,11 @@ namespace SGM.Infrastructure.Repositories.Repository
         public Orcamento GetOrcamentoById(int orcamentoId)
         {
             return _SGMContext.Orcamento.Where(x => x.OrcamentoId == orcamentoId).FirstOrDefault();
+        }
+
+        public IList<Orcamento> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _SGMContext.Orcamento.AsNoTracking().Where(orcamento => orcamento.ClienteVeiculoId == clienteVeiculoId).ToList();
         }
 
         public int SalvarOrcamento(Orcamento orcamento)

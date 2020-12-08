@@ -24,6 +24,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<IEnumerable<OrcamentoViewModel>>(_orcamentoRepository.GetOrcamentoByAll());
         }
 
+        public IList<OrcamentoViewModel> GetUltimosOrcamentos(int quantidade)
+        {
+            return _mapper.Map<IList<OrcamentoViewModel>>(_orcamentoRepository.GetUltimosOrcamento(quantidade));
+        }
+
         public Count GetOrcamentoCount()
         {
             return _mapper.Map<Count>(_orcamentoRepository.GetOrcamentoCount());
@@ -32,6 +37,11 @@ namespace SGM.ApplicationServices.Services
         public OrcamentoViewModel GetOrcamentoById(int orcamentoId)
         {
             return _mapper.Map<OrcamentoViewModel>(_orcamentoRepository.GetOrcamentoById(orcamentoId));
+        }
+
+        public IList<OrcamentoViewModel> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _mapper.Map<IList<OrcamentoViewModel>>(_orcamentoRepository.GetOrcamentoByClienteVeiculoId(clienteVeiculoId));
         }
 
         public int AtualizarOrSalvarOrcamento(OrcamentoViewModel model)

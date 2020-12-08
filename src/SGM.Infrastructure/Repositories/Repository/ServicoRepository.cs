@@ -22,6 +22,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Servico.AsNoTracking().Where(servico => servico.Ativo).ToList();
         }
 
+        public IList<Servico> GetUltimosServico(int quantidade)
+        {
+            return GetServicoByAll().OrderByDescending(x => x.DataCadastro).Take(quantidade).ToList();
+        }
+
         public Count GetServicoCount()
         {
             var contagem = GetServicoByAll().Count();
@@ -38,6 +43,11 @@ namespace SGM.Infrastructure.Repositories.Repository
         public Servico GetServicoById(int servicoId)
         {
             return _SGMContext.Servico.AsNoTracking().Where(x => x.ServicoId == servicoId).FirstOrDefault();
+        }
+
+        public IList<Servico> GetServicoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _SGMContext.Servico.AsNoTracking().Where(servico => servico.ClienteVeiculoId == clienteVeiculoId).ToList();
         }
 
         public int SalvarServico(Servico model)

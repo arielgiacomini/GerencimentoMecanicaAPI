@@ -16,5 +16,7 @@ namespace SGM.ApplicationServices.Interfaces
         void DeletarOrcamentoMaodeObra(OrcamentoMaodeObraViewModel orcamentoMaodeObraViewModel);
         IList<OrcamentoMaodeObraViewModel> GetOrcamentoMaodeObraByOrcamentoId(int orcamentoId);
         IList<OrcamentoPecaViewModel> GetOrcamentoPecaByOrcamentoId(int orcamentoId);
+        IList<OrcamentoViewModel> GetOrcamentoByClienteVeiculoId(int clienteVeiculoId);
+        IList<OrcamentoViewModel> GetUltimosOrcamentos(int quantidade);
     }
 }

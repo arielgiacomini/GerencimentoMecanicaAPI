@@ -33,12 +33,47 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("orcamento/ultimos-gerados")]
+        public IActionResult GetUltimosOrcamentos(int quantidade)
+        {
+            try
+            {
+                var count = _orcamentoServices.GetOrcamentoCount();
+
+                HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
+
+                var ultimosOrcamentos = _orcamentoServices.GetUltimosOrcamentos(quantidade);
+
+                return Ok(ultimosOrcamentos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
         [Route("orcamento/{orcamentoId}")]
         public IActionResult GetOrcamentosById(int orcamentoId)
         {
             try
             {
                 var orcamento = _orcamentoServices.GetOrcamentoById(orcamentoId);
+                return Ok(orcamento);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("orcamento/veiculo-cliente/")]
+        public IActionResult GetOrcamentoClienteVeiculoId(int clienteVeiculoId)
+        {
+            try
+            {
+                var orcamento = _orcamentoServices.GetOrcamentoByClienteVeiculoId(clienteVeiculoId);
                 return Ok(orcamento);
             }
             catch (Exception ex)

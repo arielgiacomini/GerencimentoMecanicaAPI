@@ -33,12 +33,47 @@ namespace SGM.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("servico/ultimos-gerados")]
+        public IActionResult GetUltimosServicos(int quantidade)
+        {
+            try
+            {
+                var count = _servicoServices.GetServicoCount();
+
+                HttpContext.Response.Headers.Add("X-Total-Count", count.Contagem.ToString());
+
+                var ultimosOrcamentos = _servicoServices.GetUltimosServicos(quantidade);
+
+                return Ok(ultimosOrcamentos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
         [Route("servico/{servicoId}")]
         public IActionResult GetServicoById(int servicoId)
         {
             try
             {
                 var servico = _servicoServices.GetServicoById(servicoId);
+                return Ok(servico);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("servico/veiculo-cliente/")]
+        public IActionResult GetServicoClienteVeiculoId(int clienteVeiculoId)
+        {
+            try
+            {
+                var servico = _servicoServices.GetServicoByClienteVeiculoId(clienteVeiculoId);
                 return Ok(servico);
             }
             catch (Exception ex)
