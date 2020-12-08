@@ -67,6 +67,21 @@ namespace SGM.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("servico/veiculo-cliente/")]
+        public IActionResult GetServicoClienteVeiculoId(int clienteVeiculoId)
+        {
+            try
+            {
+                var servico = _servicoServices.GetServicoByClienteVeiculoId(clienteVeiculoId);
+                return Ok(servico);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
         [HttpPost]
         [Route("servico")]
         public IActionResult Salvar(ServicoViewModel model)

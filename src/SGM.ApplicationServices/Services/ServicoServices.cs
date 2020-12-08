@@ -41,6 +41,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<ServicoViewModel>(_servicoRepository.GetServicoById(servicoId));
         }
 
+        public IList<ServicoViewModel> GetServicoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _mapper.Map<IList<ServicoViewModel>>(_servicoRepository.GetServicoByClienteVeiculoId(clienteVeiculoId));
+        }
+
         public int AtualizarOrSalvar(ServicoViewModel model)
         {
             var servico = _servicoRepository.GetServicoById(model.ServicoId);

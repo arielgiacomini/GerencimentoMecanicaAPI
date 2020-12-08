@@ -45,6 +45,11 @@ namespace SGM.Infrastructure.Repositories.Repository
             return _SGMContext.Servico.AsNoTracking().Where(x => x.ServicoId == servicoId).FirstOrDefault();
         }
 
+        public IList<Servico> GetServicoByClienteVeiculoId(int clienteVeiculoId)
+        {
+            return _SGMContext.Servico.AsNoTracking().Where(servico => servico.ClienteVeiculoId == clienteVeiculoId).ToList();
+        }
+
         public int SalvarServico(Servico model)
         {
             _SGMContext.Servico.Add(model);

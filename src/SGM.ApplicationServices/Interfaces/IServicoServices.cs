@@ -17,5 +17,6 @@ namespace SGM.ApplicationServices.Interfaces
         int SalvarServicoPeca(ServicoPecaViewModel servicoPecaViewModel);
         int SalvarServicoMaodeObra(ServicoMaodeObraViewModel servicoMaodeObraViewModel);
         IList<ServicoViewModel> GetUltimosServicos(int quantidade);
+        IList<ServicoViewModel> GetServicoByClienteVeiculoId(int clienteVeiculoId);
     }
 }
