@@ -34,11 +34,26 @@ namespace SGM.WebApi.Controllers
 
         [HttpGet]
         [Route("colaborador/{colaboradorId}")]
-        public IActionResult GetClientesById(int colaboradorId)
+        public IActionResult GetColaboradorById(int colaboradorId)
         {
             try
             {
                 var colaborador = _colaboradorServices.GetById(colaboradorId);
+                return Ok(colaborador);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("colaborador/colaborador-login/{colaboradorLogin}")]
+        public IActionResult GetColaboradorByColaboradorLogin(string colaboradorLogin)
+        {
+            try
+            {
+                var colaborador = _colaboradorServices.GetByColaboradorLogin(colaboradorLogin);
                 return Ok(colaborador);
             }
             catch (Exception ex)

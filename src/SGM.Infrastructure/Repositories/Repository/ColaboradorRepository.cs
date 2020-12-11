@@ -1,4 +1,5 @@
-﻿using SGM.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SGM.Domain.Entities;
 using SGM.Infrastructure.Context;
 using SGM.Infrastructure.Repositories.Interfaces;
 using System;
@@ -18,12 +19,17 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public IEnumerable<Colaborador> GetByAll()
         {
-            return _SGMContext.Colaborador.ToList();
+            return _SGMContext.Colaborador.AsNoTracking().ToList();
         }
 
         public Colaborador GetById(int colaboradorId)
         {
-            return _SGMContext.Colaborador.Where(x => x.ColaboradorId == colaboradorId).FirstOrDefault();
+            return _SGMContext.Colaborador.AsNoTracking().Where(x => x.ColaboradorId == colaboradorId).FirstOrDefault();
+        }
+
+        public Colaborador GetByColaboradorLogin(string colaboradorLogin)
+        {
+            return _SGMContext.Colaborador.AsNoTracking().Where(x => x.Usuario == colaboradorLogin).FirstOrDefault();
         }
 
         public void Salvar(Colaborador entidade)

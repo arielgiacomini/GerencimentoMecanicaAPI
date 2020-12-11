@@ -9,5 +9,6 @@ namespace SGM.ApplicationServices.Interfaces
         ColaboradorViewModel GetById(int colaboradorId);
         void Salvar(ColaboradorViewModel model);
         void Atualizar(ColaboradorViewModel model);
+        ColaboradorViewModel GetByColaboradorLogin(string colaboradorLogin);
     }
 }
