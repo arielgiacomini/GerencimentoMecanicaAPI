@@ -9,5 +9,6 @@ namespace SGM.Infrastructure.Repositories.Interfaces
         Colaborador GetById(int colaboradorId);
         void Salvar(Colaborador model);
         void Atualizar(Colaborador model);
+        Colaborador GetByColaboradorLogin(string colaboradorLogin);
     }
 }

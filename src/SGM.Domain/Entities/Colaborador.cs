@@ -6,7 +6,7 @@ namespace SGM.Domain.Entities
     {
         public int ColaboradorId { get; set; }
         public string Usuario { get; set; }
-        public int Senha { get; set; }
+        public string Senha { get; set; }
         public string Nome { get; set; }
         public string NomeCompleto { get; set; }
         public string Apelido { get; set; }

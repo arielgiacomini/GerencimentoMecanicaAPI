@@ -29,6 +29,11 @@ namespace SGM.ApplicationServices.Services
             return _mapper.Map<ColaboradorViewModel>(_colaboradorRepository.GetById(colaboradorId));
         }
 
+        public ColaboradorViewModel GetByColaboradorLogin(string colaboradorLogin)
+        {
+            return _mapper.Map<ColaboradorViewModel>(_colaboradorRepository.GetByColaboradorLogin(colaboradorLogin));
+        }
+
         public void Salvar(ColaboradorViewModel model)
         {
             var entidade = _mapper.Map<Colaborador>(model);
