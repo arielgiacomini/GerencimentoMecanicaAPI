@@ -63,16 +63,7 @@ namespace SGM.Infrastructure.Repositories.Repository
 
         public Cliente GetClienteByLikePlacaOrNomeOrApelido(string valor)
         {
-            var cliente = _SGMContext.Cliente.AsNoTracking().Where(x => x.NomeCliente.Contains(valor) || x.Apelido.Contains(valor)).FirstOrDefault();
-            
-            if (cliente == null)
-            {
-                return new Cliente();
-            }
-            
-            bool existeVeiculo = _SGMContext.ClienteVeiculo.AsNoTracking().Where(g => g.ClienteId == cliente.ClienteId).Any();
-
-            if (cliente != null && existeVeiculo)
+            try
             {
                 var clienteComJoin = _SGMContext
                                         .Cliente
@@ -109,9 +100,9 @@ namespace SGM.Infrastructure.Repositories.Repository
 
                 return final;
             }
-            else
+            catch (Exception)
             {
-                return cliente;
+                return new Cliente();
             }
         }
 
